@@ -7,21 +7,40 @@ public class PlayerController : MonoBehaviour
     private float moveX;
     private float moveY;
     private Vector2 movement;
+    private int xHashCode;
+    private int yHashCode;
+    private int runningHashCode;
     //private Vector2 newPosition;
 
     Rigidbody2D rb;
+    Animator anim;
 
     private float speed = 4.0f;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+    }
+
+    void Start()
+    {
+        xHashCode = Animator.StringToHash("X"); //Using hash (returns an int) is better than strings, as it is cheaper to compare two ints frame after frame than comparing, with this same frequency, two strings
+        yHashCode = Animator.StringToHash("Y");
+        runningHashCode = Animator.StringToHash("Running");
     }
 
     void Update()
     {
         moveX = InputPlayer.sharedInstance.horizontal;
         moveY = InputPlayer.sharedInstance.vertical;
+
+        if (moveX != 0 || moveY != 0) //It will update the state only if the character moves. Otherwise, it will stay in the last state it entered (the knight will look at the direction he was lastly told to move to)
+        {
+            anim.SetFloat(xHashCode, moveX);
+            anim.SetFloat(yHashCode, moveY);
+            anim.SetFloat(runningHashCode, Mathf.Abs(moveX) + Mathf.Abs(moveY));
+        }
     }
     private void FixedUpdate()
     {
