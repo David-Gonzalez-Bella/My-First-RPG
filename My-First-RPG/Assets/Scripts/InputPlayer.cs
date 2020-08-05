@@ -13,15 +13,11 @@ public class InputPlayer : MonoBehaviour
     public bool ability2 { get; private set; }
     public bool interact { get; private set; }
     public bool inventary { get; private set; }
+    public bool flip { get; private set; }
 
     private void Awake()
     {
         sharedInstance = this;
-    }
-
-    void Start()
-    {
-
     }
 
     void Update()
