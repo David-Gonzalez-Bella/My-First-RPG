@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Atributes))]
+[RequireComponent(typeof(Attack))]
+
 public class PlayerController : MonoBehaviour
 {
     private float moveX;
     private float moveY;
     private Vector2 movement;
+    private bool attack;
     private int xHashCode;
     private int yHashCode;
     private int runningHashCode;
@@ -15,12 +19,16 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     Animator anim;
 
-    private float speed = 4.0f;
+    private Atributes atrib;
+    private Attack atck;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
+        atrib = GetComponent<Atributes>();
+        atck = GetComponent<Attack>();
     }
 
     void Start()
@@ -34,6 +42,7 @@ public class PlayerController : MonoBehaviour
     {
         moveX = InputPlayer.sharedInstance.horizontal;
         moveY = InputPlayer.sharedInstance.vertical;
+        attack = InputPlayer.sharedInstance.basicAtk;
 
         if (moveX != 0 || moveY != 0) //It will update the state only if the character moves. Otherwise, it will stay in the last state it entered (the knight will look at the direction he was lastly told to move to)
         {
@@ -41,11 +50,15 @@ public class PlayerController : MonoBehaviour
             anim.SetFloat(yHashCode, moveY);
             anim.SetFloat(runningHashCode, Mathf.Abs(moveX) + Mathf.Abs(moveY));
         }
+        if (attack) //If we pressed the attack button/s
+        {
+            atck.ActionAttack(InputPlayer.sharedInstance.faceDirection, atrib.damage); //This will send the direction we are facing ((1, 0), (0, 1), (-1, 0) or (0, -1))
+        }
     }
     private void FixedUpdate()
     {
         //newPosition = transform.position + new Vector3(moveX * speed * Time.deltaTime, moveY * speed * Time.deltaTime, 0);
-        movement = new Vector2(moveX, moveY) * speed; //* Time.deltaTime; -> Here i dont multiply by Time.deltaTime, as i am change the rigidbody´s velocity directly. It is not a manual update of the position, as i was doing before
+        movement = new Vector2(moveX, moveY) * atrib.speed; //* Time.deltaTime; -> Here i dont multiply by Time.deltaTime, as i am change the rigidbody´s velocity directly. It is not a manual update of the position, as i was doing before
         rb.velocity = movement; /*transform.position = newPosition;*/
     }
 }
