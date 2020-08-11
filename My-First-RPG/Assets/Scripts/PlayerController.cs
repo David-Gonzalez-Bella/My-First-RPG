@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private int xHashCode;
     private int yHashCode;
     private int runningHashCode;
+    private int attackHashCode;
     //private Vector2 newPosition;
 
     Rigidbody2D rb;
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
         xHashCode = Animator.StringToHash("X"); //Using hash (returns an int) is better than strings, as it is cheaper to compare two ints frame after frame than comparing, with this same frequency, two strings
         yHashCode = Animator.StringToHash("Y");
         runningHashCode = Animator.StringToHash("Running");
+        attackHashCode = Animator.StringToHash("Attack");
     }
 
     void Update()
@@ -52,9 +54,16 @@ public class PlayerController : MonoBehaviour
         }
         if (attack) //If we pressed the attack button/s
         {
-            atck.ActionAttack(InputPlayer.sharedInstance.faceDirection, atrib.damage); //This will send the direction we are facing ((1, 0), (0, 1), (-1, 0) or (0, -1))
+            //atck.ActionAttack(InputPlayer.sharedInstance.faceDirection, atrib.damage); //This will send the direction we are facing ((1, 0), (0, 1), (-1, 0) or (0, -1))
+            anim.SetTrigger(attackHashCode);
         }
     }
+
+    public void AttackAnimEvent()
+    {
+        atck.ActionAttack(InputPlayer.sharedInstance.faceDirection, atrib.damage); //This will send the direction we are facing ((1, 0), (0, 1), (-1, 0) or (0, -1))
+    }
+
     private void FixedUpdate()
     {
         //newPosition = transform.position + new Vector3(moveX * speed * Time.deltaTime, moveY * speed * Time.deltaTime, 0);
