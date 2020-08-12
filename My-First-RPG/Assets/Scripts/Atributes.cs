@@ -5,5 +5,5 @@ using UnityEngine;
 public class Atributes : MonoBehaviour
 {
     public float speed = 4.0f;
-    public float damage;
+    public int damage = 1;
 }
