@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Atributes))]
 [RequireComponent(typeof(Attack))]
 
 public class PlayerController : MonoBehaviour
@@ -20,7 +19,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     Animator anim;
 
-    private Atributes atrib;
+    public Atributes atrib;
     private Attack atck;
 
     private void Awake()
@@ -28,7 +27,6 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
 
-        atrib = GetComponent<Atributes>();
         atck = GetComponent<Attack>();
     }
 
