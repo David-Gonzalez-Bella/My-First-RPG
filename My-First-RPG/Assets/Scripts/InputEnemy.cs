@@ -25,16 +25,22 @@ public class InputEnemy : MonoBehaviour
         {
             return playerDirection.magnitude;
         }
-    }
+    } 
 
     public Transform playerPos;
 
     private void Start()
     {
         //playerPos = GameManager.sharedInstance.player.transform; //ERROR due to the scripts execution order (we'll solve it later on)
+        SetPlayerDirection();
     }
 
     private void Update()
+    {
+        SetPlayerDirection();
+    }
+
+    private void SetPlayerDirection()
     {
         playerDirection = playerPos.position - this.transform.position;
     }

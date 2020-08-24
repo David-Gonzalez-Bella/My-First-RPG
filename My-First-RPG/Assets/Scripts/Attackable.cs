@@ -27,7 +27,6 @@ public class Attackable : MonoBehaviour
     public void Attacked(Vector2 attackDirection, int damage)
     {
         myHealth.ModifyHealth(-damage); //When attacked, the object will lose 1HP
-        rb.AddForce(attackDirection * damage * 100); //When attacked, the object will be pusshed back as well
-        Debug.Log("Knight hit!!, His health is: " + myHealth.CurrentHealth);
+        rb.AddForce(attackDirection * damage * 175, ForceMode2D.Impulse); //When attacked, the object will be pusshed back as well
     }
 }
