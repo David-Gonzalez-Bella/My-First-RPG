@@ -8,6 +8,7 @@ public class EnemyKnight : Enemy //Enemy inherits from Monobehaviour. Therefore,
     private Attack atk; //The EnemyKnight can attack our player
     private Animator anim;
     private SpriteRenderer spr;
+    private CapsuleCollider2D col;
 
     private int attackHash;
     private int deadHash;
@@ -27,6 +28,7 @@ public class EnemyKnight : Enemy //Enemy inherits from Monobehaviour. Therefore,
         input = this.GetComponent<InputEnemy>(); //Now the EnemyKnight knows the direction of the players, in other words, the player´s position regarding its own
         atk = this.GetComponent<Attack>();
         anim = this.GetComponent<Animator>();
+        col = this.GetComponent<CapsuleCollider2D>();
         spr = this.GetComponentInChildren<SpriteRenderer>();
     }
 
@@ -48,23 +50,36 @@ public class EnemyKnight : Enemy //Enemy inherits from Monobehaviour. Therefore,
         {
             if (!attacking && input.distanceMagnitude < attackingDistance) //If the enemy is not attacking and the distance to the player is less than the attacking distance it means that he shall attack the player
             {
-                attackDirection = input.playerDirection; //Just when the knight decides to attack the direction he is facing will be decided
-                inCombat = true;
-                attacking = true;
-                FlipSprite();
-                anim.SetTrigger(attackHash);
-                anim.SetBool(walkHash, false);
+                AttackPlayer();
             }
             else if (!attacking && (/*inCombat ||*/ input.distanceMagnitude < detectionDistance))
             {
-                anim.SetBool(walkHash, true);
                 ChasePlayer();
             }
+            else //If the player is out of range
+            {
+                anim.SetBool(walkHash, false);
+            }
+        }
+    }
+
+    private void AttackPlayer()
+    {
+        int attackChance = Random.Range(0, 100);
+        if (attackChance > 95) //The chance has to be very low, because this method is executing a lot of times per frame, so we must discriminate a lot of numbers
+        {
+            attackDirection = input.playerDirection; //Just when the knight decides to attack the direction he is facing will be decided
+            inCombat = true;
+            attacking = true;
+            FlipSprite();
+            anim.SetBool(walkHash, false);
+            anim.SetTrigger(attackHash);
         }
     }
 
     private void ChasePlayer()
     {
+        anim.SetBool(walkHash, true);
         FlipSprite();
         this.transform.position += (Vector3)input.playerDirection * atrib.speed * Time.deltaTime;
     }
@@ -76,12 +91,25 @@ public class EnemyKnight : Enemy //Enemy inherits from Monobehaviour. Therefore,
 
     private void FlipSprite()
     {
-        if (input.horizontalDir < 0) { spr.flipX = true; }
-        else { spr.flipX = false; }
+        if (input.horizontalDir < 0)
+        {
+            spr.flipX = true;
+        }
+        else
+        {
+            spr.flipX = false;
+        }
     }
 
     public void EndAttack()
     {
         attacking = false;
+    }
+
+    public void Die() //This function will be called in the "Health" script, thanks to the Unity Event
+    {
+        dead = true;
+        col.enabled = false;
+        anim.SetBool(deadHash, true); //This triggers the animation, and on the last frame the character will be destroyed (so did we configured it in the animator interface)
     }
 }

@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
     public int baseHealth;
     private int currentHealth;
+    public UnityEvent dieEvent; //This is not really necessary, we could do it with a reference to the GameObject´s animator, but its usefull to have an example of UnityEvents
     public int CurrentHealth
     {
         get
@@ -25,7 +27,7 @@ public class Health : MonoBehaviour
             else //If the modifyied health is equal or below 0
             {
                 currentHealth = 0;
-                Destroy(this.gameObject);
+                dieEvent?.Invoke(); //The '?' check is just to avoid a possible error in case that the envent wasn´t dropped in the editor, but it will always invoke 
             }
         }
     }
@@ -38,5 +40,10 @@ public class Health : MonoBehaviour
     public void ModifyHealth(int quantity) //This metod will be used to take damage or to heal
     {
         CurrentHealth += quantity;
+    }
+
+    public void DestroyCharacter() //Called during the character´s death animation
+    {
+        Destroy(this.gameObject);
     }
 }

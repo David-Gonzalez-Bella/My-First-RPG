@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8211171340739592706}
   - component: {fileID: 6447446771185205821}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: enemyKnight_SPR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -808244081
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -6273196251013692260, guid: 80054e69282e3754dac84217f3f6ecce,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 325838609}
   - component: {fileID: 325838610}
   - component: {fileID: 325838611}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemyKnight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,15 +133,15 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 40
+  m_LinearDrag: 5
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &3216168034877912947
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -155,8 +155,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0116016865, y: -0.13005722}
-  m_Size: {x: 0.6673002, y: 1.9085491}
+  m_Offset: {x: -0.026859999, y: -0.0047688484}
+  m_Size: {x: 0.95468473, y: 1.6579723}
   m_Direction: 0
 --- !u!95 &7100509436759683594
 Animator:
@@ -248,3 +248,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseHealth: 10
+  dieEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 119999900276063588}
+        m_MethodName: Die
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

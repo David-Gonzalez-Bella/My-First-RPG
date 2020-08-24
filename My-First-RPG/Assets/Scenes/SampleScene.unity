@@ -1386,6 +1386,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseHealth: 10
+  dieEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &463262783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1715,7 +1718,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &612324977
 MonoBehaviour:
@@ -1730,6 +1733,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseHealth: 10
+  dieEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!50 &612324978
 Rigidbody2D:
   serializedVersion: 4
@@ -7519,7 +7525,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1427809919
 GameObject:
@@ -10057,7 +10063,7 @@ PrefabInstance:
     - target: {fileID: 795828384653419784, guid: cdb095c4cd721e54592c589b6a703c5a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 795828384653419784, guid: cdb095c4cd721e54592c589b6a703c5a,
         type: 3}
@@ -10074,45 +10080,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1730927303805258923, guid: cdb095c4cd721e54592c589b6a703c5a,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 2871528122061800315, guid: cdb095c4cd721e54592c589b6a703c5a,
         type: 3}
       propertyPath: playerPos
       value: 
       objectReference: {fileID: 463262776}
-    - target: {fileID: 3216168034877912947, guid: cdb095c4cd721e54592c589b6a703c5a,
-        type: 3}
-      propertyPath: m_Offset.x
-      value: -0.026860356
-      objectReference: {fileID: 0}
-    - target: {fileID: 3216168034877912947, guid: cdb095c4cd721e54592c589b6a703c5a,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 1.0262787
-      objectReference: {fileID: 0}
     - target: {fileID: 6679199191567575623, guid: cdb095c4cd721e54592c589b6a703c5a,
         type: 3}
       propertyPath: m_Name
       value: EnemyKnight
-      objectReference: {fileID: 0}
-    - target: {fileID: 6679199191567575623, guid: cdb095c4cd721e54592c589b6a703c5a,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6869448589754303143, guid: cdb095c4cd721e54592c589b6a703c5a,
-        type: 3}
-      propertyPath: m_LinearDrag
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6869448589754303143, guid: cdb095c4cd721e54592c589b6a703c5a,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdb095c4cd721e54592c589b6a703c5a, type: 3}
