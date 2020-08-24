@@ -92,9 +92,13 @@ GameObject:
   m_Component:
   - component: {fileID: 795828384653419784}
   - component: {fileID: 6869448589754303143}
+  - component: {fileID: 3216168034877912947}
   - component: {fileID: 7100509436759683594}
   - component: {fileID: 2871528122061800315}
   - component: {fileID: 119999900276063588}
+  - component: {fileID: 325838609}
+  - component: {fileID: 325838610}
+  - component: {fileID: 325838611}
   m_Layer: 0
   m_Name: EnemyKnight
   m_TagString: Untagged
@@ -138,6 +142,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!70 &3216168034877912947
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6679199191567575623}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0116016865, y: -0.13005722}
+  m_Size: {x: 0.6673002, y: 1.9085491}
+  m_Direction: 0
 --- !u!95 &7100509436759683594
 Animator:
   serializedVersion: 3
@@ -148,7 +168,7 @@ Animator:
   m_GameObject: {fileID: 6679199191567575623}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 57d929ff18f0fac4baae145f15f73bd1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -184,4 +204,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   atrib: {fileID: 11400000, guid: 1e9756ce0db23ef49a646ad0b5ea37ec, type: 2}
   exp: 0
-  myName: 
+  detectionDistance: 5
+  attackingDistance: 2
+--- !u!114 &325838609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6679199191567575623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f968f6341a4374b4c8a578d4e71ccb83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 1.2
+  hitbox: {x: 1, y: 0.5}
+  attackableLayer:
+    serializedVersion: 2
+    m_Bits: 512
+--- !u!114 &325838610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6679199191567575623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c934f988db99ff54f8fef0887ca2cd76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &325838611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6679199191567575623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d484332f2d5ac4bbd3b5a3e559edd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseHealth: 10

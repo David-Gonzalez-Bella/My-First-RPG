@@ -32,6 +32,36 @@ TextureImporter:
   - first:
       213: -567708246441641462
     second: knight 3 improved slash animation_9
+  - first:
+      213: -6197725017121954148
+    second: knight 3 improved slash animation_0
+  - first:
+      213: 1402612889206792695
+    second: knight 3 improved slash animation_1
+  - first:
+      213: 5645340679472536842
+    second: knight 3 improved slash animation_2
+  - first:
+      213: -1655693224671523726
+    second: knight 3 improved slash animation_3
+  - first:
+      213: 2701111730538160420
+    second: knight 3 improved slash animation_4
+  - first:
+      213: -6205803432867181436
+    second: knight 3 improved slash animation_5
+  - first:
+      213: -1661782650321938489
+    second: knight 3 improved slash animation_6
+  - first:
+      213: -7931436527575455263
+    second: knight 3 improved slash animation_7
+  - first:
+      213: 7193191467125681105
+    second: knight 3 improved slash animation_8
+  - first:
+      213: 3296297279994372090
+    second: knight 3 improved slash animation_9
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -132,10 +162,10 @@ TextureImporter:
       name: knight 3 improved slash animation_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 80
-        height: 80
+        x: 2
+        y: 2
+        width: 42
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,8 +173,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c55acaea38208bd50800000000000000
-      internalID: 6753150405836580188
+      spriteID: c96e4e21fe14df9a0800000000000000
+      internalID: -6197725017121954148
       vertices: []
       indices: 
       edges: []
@@ -153,19 +183,19 @@ TextureImporter:
       name: knight 3 improved slash animation_1
       rect:
         serializedVersion: 2
-        x: 80
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 81
+        y: 1
+        width: 42
+        height: 40
+      alignment: 9
+      pivot: {x: 0.51, y: 0.55}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 35ac9662e1cced9e0800000000000000
-      internalID: -1594612788177024429
+      spriteID: 7f12e8acdf4177310800000000000000
+      internalID: 1402612889206792695
       vertices: []
       indices: 
       edges: []
@@ -174,19 +204,19 @@ TextureImporter:
       name: knight 3 improved slash animation_2
       rect:
         serializedVersion: 2
-        x: 160
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 161
+        y: 2
+        width: 42
+        height: 40
+      alignment: 9
+      pivot: {x: 0.51, y: 0.525}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f08619c85a752cd70800000000000000
-      internalID: 9061901768762419215
+      spriteID: a0dd50c0077485e40800000000000000
+      internalID: 5645340679472536842
       vertices: []
       indices: 
       edges: []
@@ -195,19 +225,19 @@ TextureImporter:
       name: knight 3 improved slash animation_3
       rect:
         serializedVersion: 2
-        x: 240
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 241
+        y: 2
+        width: 42
+        height: 40
+      alignment: 9
+      pivot: {x: 0.51, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5cbe5ef7a7f9cbbb0800000000000000
-      internalID: -4918881344514823227
+      spriteID: 27cce6ec8cbc509e0800000000000000
+      internalID: -1655693224671523726
       vertices: []
       indices: 
       edges: []
@@ -216,19 +246,19 @@ TextureImporter:
       name: knight 3 improved slash animation_4
       rect:
         serializedVersion: 2
-        x: 320
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 322
+        y: 2
+        width: 42
+        height: 40
+      alignment: 9
+      pivot: {x: 0.5, y: 0.471}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd40c4dc8ecc6ed00800000000000000
-      internalID: 1001713267385304285
+      spriteID: 4212e5dcec64c7520800000000000000
+      internalID: 2701111730538160420
       vertices: []
       indices: 
       edges: []
@@ -237,19 +267,19 @@ TextureImporter:
       name: knight 3 improved slash animation_5
       rect:
         serializedVersion: 2
-        x: 400
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 409
+        y: 2
+        width: 42
+        height: 40
+      alignment: 9
+      pivot: {x: 0.36, y: 0.47}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0cc811ef764baf50800000000000000
-      internalID: 6893681169671965710
+      spriteID: 48c4d0658ae80e9a0800000000000000
+      internalID: -6205803432867181436
       vertices: []
       indices: 
       edges: []
@@ -258,19 +288,19 @@ TextureImporter:
       name: knight 3 improved slash animation_6
       rect:
         serializedVersion: 2
-        x: 480
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 489
+        y: 2
+        width: 42
+        height: 40
+      alignment: 9
+      pivot: {x: 0.36, y: 0.47}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 669f981e2673672a0800000000000000
-      internalID: -6740138894483130010
+      spriteID: 7c757a9eb7920f8e0800000000000000
+      internalID: -1661782650321938489
       vertices: []
       indices: 
       edges: []
@@ -279,19 +309,19 @@ TextureImporter:
       name: knight 3 improved slash animation_7
       rect:
         serializedVersion: 2
-        x: 560
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 567
+        y: 2
+        width: 42
+        height: 40
+      alignment: 9
+      pivot: {x: 0.4, y: 0.47}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1764f4798c5e28670800000000000000
-      internalID: 8539640493142656625
+      spriteID: 1e9ae4f2080ede190800000000000000
+      internalID: -7931436527575455263
       vertices: []
       indices: 
       edges: []
@@ -300,19 +330,19 @@ TextureImporter:
       name: knight 3 improved slash animation_8
       rect:
         serializedVersion: 2
-        x: 640
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 653
+        y: 2
+        width: 42
+        height: 40
+      alignment: 9
+      pivot: {x: 0.24, y: 0.47}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 509c6c12592ac94c0800000000000000
-      internalID: -4279366784508311291
+      spriteID: 1dba567378953d360800000000000000
+      internalID: 7193191467125681105
       vertices: []
       indices: 
       edges: []
@@ -321,19 +351,19 @@ TextureImporter:
       name: knight 3 improved slash animation_9
       rect:
         serializedVersion: 2
-        x: 720
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 731
+        y: 2
+        width: 42
+        height: 40
+      alignment: 9
+      pivot: {x: 0.3, y: 0.47}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0a39c29b581f18f0800000000000000
-      internalID: -567708246441641462
+      spriteID: aff962069eccebd20800000000000000
+      internalID: 3296297279994372090
       vertices: []
       indices: 
       edges: []

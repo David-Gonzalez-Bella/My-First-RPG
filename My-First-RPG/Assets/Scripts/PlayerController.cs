@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void AttackAnimEvent()
+    public void AttackAnimEvent() //Called during the attack animation
     {
         atck.ActionAttack(InputPlayer.sharedInstance.faceDirection, atrib.damage); //This will send the direction we are facing ((1, 0), (0, 1), (-1, 0) or (0, -1))
     }

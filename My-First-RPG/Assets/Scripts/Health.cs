@@ -14,15 +14,15 @@ public class Health : MonoBehaviour
         }
         set
         {
-            if (value > 0 && value <= baseHealth)
+            if (value > 0 && value <= baseHealth) //If the modifyied health is between 0 and the top health we can have
             {
                 currentHealth = value;
             }
-            else if(value > baseHealth)
+            else if(value > baseHealth) //If the modifyied health exceeds the top health
             {
-                currentHealth = baseHealth;
+                currentHealth = baseHealth; 
             }
-            else
+            else //If the modifyied health is equal or below 0
             {
                 currentHealth = 0;
                 Destroy(this.gameObject);
