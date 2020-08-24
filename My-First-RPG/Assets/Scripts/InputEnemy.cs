@@ -19,13 +19,14 @@ public class InputEnemy : MonoBehaviour
             return playerDirection.y;
         }
     }
-    public float magnitude
+    public float distanceMagnitude
     {
         get
         {
             return playerDirection.magnitude;
         }
     }
+
     public Transform playerPos;
 
     private void Start()
