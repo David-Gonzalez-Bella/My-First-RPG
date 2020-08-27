@@ -38,10 +38,7 @@ public class Attack : MonoBehaviour
         int numAttackable = Physics2D.OverlapArea(A, B, attackableFilter, attackableElements); //attackableElements has the Collider2Ds found inside de hitmbox, meaning that that array is now filled with the elements that collided with our hitbox (therefore, we dont have to store the return values inside another array)
         for (int i = 0; i < numAttackable; i++)
         {
-            if (attackableElements[i].GetComponent<Attackable>() == true)
-            {
-                attackableElements[i].GetComponent<Attackable>().Attacked(attackDirection, damage);
-            }
+            attackableElements[i].GetComponent<Attackable>().Attacked(attackDirection, damage);
         }
     }
 
@@ -49,5 +46,11 @@ public class Attack : MonoBehaviour
     {
         CreateHitbox(attackDirection);
         CheckAttacked(attackDirection, damage);   
+    }
+
+    public void ProyectileAttack(Proyectile proyectile, Vector2 attackDirection, Transform shootPoint)
+    {
+        proyectile.direction = attackDirection; //The direction of the fireball is the direction towards the player. When the proyectile is instanciated its direction is set, not before
+        Instantiate(proyectile.gameObject, shootPoint.position, Quaternion.identity, GameManager.sharedInstance.proyectilesContiner);
     }
 }

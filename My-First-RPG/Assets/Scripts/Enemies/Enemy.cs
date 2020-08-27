@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour //This contains the IA and the atributes every enemy will have
 {
-    public Atributes atrib;
+    public Atributes atrib; //Evey enemy has his basic atributes (for a more specific one they'll have them in their own script)
     public int exp;
 
     protected InputEnemy input;
@@ -59,7 +59,7 @@ public class Enemy : MonoBehaviour //This contains the IA and the atributes ever
             {
                 ChasePlayer();
             }
-            else //If the player is out of range
+            else //If the player is out of range he goes to idle animation
             {
                 anim.SetBool(walkHash, false);
             }
@@ -69,13 +69,13 @@ public class Enemy : MonoBehaviour //This contains the IA and the atributes ever
     private void AttackPlayer()
     {
         int attackChance = Random.Range(0, 100);
+        anim.SetBool(walkHash, false); //When the enemy is in attacking state he will stop walking
         if (attackChance > 95) //The chance has to be very low, because this method is executing a lot of times per frame, so we must discriminate a lot of numbers
         {
             attackDirection = input.playerDirection; //Just when the knight decides to attack the direction he is facing will be decided
             //inCombat = true;
             attacking = true;
             FlipSprite();
-            anim.SetBool(walkHash, false);
             anim.SetTrigger(attackHash);
         }
     }
@@ -87,6 +87,7 @@ public class Enemy : MonoBehaviour //This contains the IA and the atributes ever
         this.transform.position += (Vector3)input.playerDirection * atrib.speed * Time.deltaTime;
     }
 
+    //Virtual methods
     public virtual void EnemyAttack() { } //Called during the attack animation (each enemy will attack in his own way)
 
     public virtual void FlipSprite() { } //Each enemy will flip his sprite in his own way, depending on the direction his sprite sheets look at

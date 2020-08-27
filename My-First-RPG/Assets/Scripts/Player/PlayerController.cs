@@ -16,8 +16,8 @@ public class PlayerController : MonoBehaviour
     private int attackHashCode;
     //private Vector2 newPosition;
 
-    Rigidbody2D rb;
-    Animator anim;
+    private Rigidbody2D rb;
+    private Animator anim;
 
     public Atributes atrib;
     private Attack atck;
@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-
         atck = GetComponent<Attack>();
     }
 
