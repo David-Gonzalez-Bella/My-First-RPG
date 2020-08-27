@@ -42,6 +42,6 @@ public class InputEnemy : MonoBehaviour
 
     private void SetPlayerDirection()
     {
-        playerDirection = playerPos.position - this.transform.position;
+        playerDirection = playerPos.position - this.gameObject.transform.position;
     }
 }

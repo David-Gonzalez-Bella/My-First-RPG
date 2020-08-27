@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager sharedInstance;
+    public Transform proyectilesContiner;
 
     public Vector2 playerSpawnPoint;
     public GameObject player { get; private set; }
