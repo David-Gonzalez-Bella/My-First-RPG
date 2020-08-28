@@ -121,6 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   atrib: {fileID: 11400000, guid: 6684ad60225dadd4fb14530d580ceb03, type: 2}
+  swordFlash: {fileID: 7317127439547913718, guid: cf0817265cdbf48419b3e58c44da8f94,
+    type: 3}
 --- !u!114 &6259099323098235027
 MonoBehaviour:
   m_ObjectHideFlags: 0
