@@ -33,24 +33,28 @@ public class Attack : MonoBehaviour
         B = A + scaledHitbox; //Right top dot in our hitbox
     }
 
-    private void CheckAttacked(Vector2 attackDirection, int damage)
+    private void CheckAttacked(Vector2 attackDirection, int damage, GameObject swordFlash)
     {
         int numAttackable = Physics2D.OverlapArea(A, B, attackableFilter, attackableElements); //attackableElements has the Collider2Ds found inside de hitmbox, meaning that that array is now filled with the elements that collided with our hitbox (therefore, we dont have to store the return values inside another array)
         for (int i = 0; i < numAttackable; i++)
         {
             attackableElements[i].GetComponent<Attackable>().Attacked(attackDirection, damage);
+            Instantiate(swordFlash, attackableElements[i].transform);
         }
     }
 
-    public void PhysicalAttack(Vector2 attackDirection, int damage) 
+    public void PhysicalAttack(Vector2 attackDirection, int damage, GameObject swordFlash) 
     {
         CreateHitbox(attackDirection);
-        CheckAttacked(attackDirection, damage);   
+        CheckAttacked(attackDirection, damage, swordFlash);   
     }
 
     public void ProyectileAttack(Proyectile proyectile, Vector2 attackDirection, Transform shootPoint)
     {
         proyectile.direction = attackDirection; //The direction of the fireball is the direction towards the player. When the proyectile is instanciated its direction is set, not before
-        Instantiate(proyectile.gameObject, shootPoint.position, Quaternion.identity, GameManager.sharedInstance.proyectilesContiner);
+        GameObject p = Instantiate(proyectile.gameObject, shootPoint.position, Quaternion.identity, GameManager.sharedInstance.proyectilesContiner);
+        float rotateAngle = Mathf.Atan2(attackDirection.y, attackDirection.x) * Mathf.Rad2Deg;
+        p.transform.Rotate(0, 0, rotateAngle);
+
     }
 }

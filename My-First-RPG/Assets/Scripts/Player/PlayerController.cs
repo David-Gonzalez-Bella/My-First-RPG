@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
     public Atributes atrib;
     private Attack atck;
 
+    public GameObject swordFlash;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -58,7 +60,7 @@ public class PlayerController : MonoBehaviour
 
     public void AttackAnimEvent() //Called during the attack animation
     {
-        atck.PhysicalAttack(InputPlayer.sharedInstance.faceDirection, atrib.damage); //This will send the direction we are facing ((1, 0), (0, 1), (-1, 0) or (0, -1))
+        atck.PhysicalAttack(InputPlayer.sharedInstance.faceDirection, atrib.damage, swordFlash); //This will send the direction we are facing ((1, 0), (0, 1), (-1, 0) or (0, -1))
     }
 
     private void FixedUpdate()

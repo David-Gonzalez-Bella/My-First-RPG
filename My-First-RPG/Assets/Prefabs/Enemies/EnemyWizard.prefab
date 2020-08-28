@@ -49,7 +49,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2a3f989c91bc6be46954b3e6f2745c91, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -144,7 +144,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7823701081727747103}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.0324316, y: -1.9849799, z: 0}
+  m_LocalPosition: {x: 8.77, y: -5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2275521927119152025}
@@ -224,8 +224,9 @@ MonoBehaviour:
   exp: 0
   detectionDistance: 5
   attackingDistance: 3
-  fireball: {fileID: 4055717228359582199, guid: 7ab42f3fea7dec246b6c7e076bb76d8d,
+  fireball: {fileID: 6985673739877001683, guid: 82fe0d9b0218aaa489c5f00bfab62dbe,
     type: 3}
+  shootOrigin: {fileID: 2078150974883369921}
 --- !u!114 &1718724303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,7 +239,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 517f55bd9404f5f4482a9cf98543676b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPos: {fileID: 0}
 --- !u!114 &1718724301
 MonoBehaviour:
   m_ObjectHideFlags: 0

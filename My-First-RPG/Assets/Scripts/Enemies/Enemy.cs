@@ -97,6 +97,11 @@ public class Enemy : MonoBehaviour //This contains the IA and the atributes ever
         attacking = false;
     }
 
+    public void DissappearEffect()
+    {
+        EnemySpawner.sharedInstance.InstantiateSpawnEffect(this);
+    }
+
     public void Die() //This function will be called in the "Health" script, thanks to the Unity Event
     {
         dead = true;

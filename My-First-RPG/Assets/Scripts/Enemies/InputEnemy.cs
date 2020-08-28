@@ -27,7 +27,12 @@ public class InputEnemy : MonoBehaviour
         }
     } 
 
-    public Transform playerPos;
+    private Transform playerPos;
+
+    private void Awake()
+    {
+        playerPos = GameObject.FindGameObjectWithTag("Player").transform;
+    }
 
     private void Start()
     {
