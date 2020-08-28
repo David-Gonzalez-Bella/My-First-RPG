@@ -31,6 +31,7 @@ public class Attackable : MonoBehaviour
     {
         myHealth.ModifyHealth(-damage); //When attacked, the object will lose 1HP
         spr.color = Color.red;
+        TextHitGenerator.sharedInstance.CreateTextHit(Color.red, this.transform, -damage);
         yield return new WaitForSeconds(0.15f);
         spr.color = Color.white;
     }

@@ -13,7 +13,6 @@ public class EnemySpawner : MonoBehaviour
         sharedInstance = this;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(SpawnEnemy());
