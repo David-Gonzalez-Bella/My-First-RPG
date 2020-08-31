@@ -52,7 +52,6 @@ public class TextHit : MonoBehaviour
         Color currentColor = tm.color;
         for (float alpha = 1; alpha > 0; alpha -= 0.08f)
         {
-            Debug.Log(alpha);
             currentColor.a = alpha;
             tm.color = currentColor;
             yield return new WaitForEndOfFrame();
