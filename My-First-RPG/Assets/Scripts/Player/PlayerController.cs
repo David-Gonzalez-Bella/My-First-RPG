@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     private float moveY;
     private Vector2 movement;
     private bool attack;
+    private bool inventary;
+
     private int xHashCode;
     private int yHashCode;
     private int runningHashCode;
@@ -44,6 +46,7 @@ public class PlayerController : MonoBehaviour
         moveX = InputPlayer.sharedInstance.horizontal;
         moveY = InputPlayer.sharedInstance.vertical;
         attack = InputPlayer.sharedInstance.basicAtk;
+        inventary = InputPlayer.sharedInstance.inventary;
 
         if (moveX != 0 || moveY != 0) //It will update the state only if the character moves. Otherwise, it will stay in the last state it entered (the knight will look at the direction he was lastly told to move to)
         {
@@ -55,6 +58,10 @@ public class PlayerController : MonoBehaviour
         {
             //atck.ActionAttack(InputPlayer.sharedInstance.faceDirection, atrib.damage); //This will send the direction we are facing ((1, 0), (0, 1), (-1, 0) or (0, -1))
             anim.SetTrigger(attackHashCode);
+        }
+        if (inventary)
+        {
+            PanelsMenu.sharedInstance.OpenClosePanels();
         }
     }
 

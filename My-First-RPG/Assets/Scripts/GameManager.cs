@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager sharedInstance;
+    public static GameManager sharedInstance { get; private set; }
     public Transform proyectilesContiner;
 
     public Vector2 playerSpawnPoint;
@@ -12,11 +12,12 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        sharedInstance = this;
+        if (sharedInstance == null)
+            sharedInstance = this;
     }
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player"); 
+        player = GameObject.FindGameObjectWithTag("Player");
         player.transform.position = playerSpawnPoint;
     }
 }
