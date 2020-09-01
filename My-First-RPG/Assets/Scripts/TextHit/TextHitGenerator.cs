@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class TextHitGenerator : MonoBehaviour
 {
-    public static TextHitGenerator sharedInstance;
+    public static TextHitGenerator sharedInstance { get; private set; }
     public TextHit textHit;
 
     private void Awake()
     {
-        sharedInstance = this;
+        if (sharedInstance == null)
+            sharedInstance = this;
     }
 
     public void CreateTextHit(Color color, Transform parent, int damage)

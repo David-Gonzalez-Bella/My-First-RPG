@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public static EnemySpawner sharedInstance;
-    public Enemy [] enemies;
+    public static EnemySpawner sharedInstance { get; private set; }
+    public Enemy[] enemies;
     public GameObject spawnEffect;
 
     private void Awake()
     {
-        sharedInstance = this;
+        if (sharedInstance == null)
+            sharedInstance = this;
     }
 
     void Start()
@@ -25,16 +26,16 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnEnemy()
     {
-        for(int i = 0; i < enemies.Length; i++)
+        for (int i = 0; i < enemies.Length; i++)
         {
             InstantiateSpawnEffect(enemies[i]);
         }
-        
+
         yield return new WaitForSeconds(0.7f);
 
         for (int i = 0; i < enemies.Length; i++)
         {
             Instantiate(enemies[i], this.transform);
-        }   
+        }
     }
 }
