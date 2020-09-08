@@ -304,7 +304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   atrib: {fileID: 11400000, guid: 49e03fac7df50af4e849975f5a812fa5, type: 2}
-  exp: 0
+  exp: 12
   detectionDistance: 5
   attackingDistance: 3
   fireball: {fileID: 6985673739877001683, guid: 82fe0d9b0218aaa489c5f00bfab62dbe,
@@ -334,13 +334,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d484332f2d5ac4bbd3b5a3e559edd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealth: 5
+  baseHealth: 1
   healthBar: {fileID: 0}
   dieEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8095788914271323037}
         m_MethodName: Die
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8095788914271323037}
+        m_MethodName: DropExperience
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

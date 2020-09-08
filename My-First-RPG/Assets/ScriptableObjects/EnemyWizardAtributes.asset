@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b995e8a19a8bc264c9e62e7d7e934d9a, type: 3}
   m_Name: EnemyWizardAtributes
   m_EditorClassIdentifier: 
-  speed: 0.5
-  damage: 1
+  baseSpeed: 2
+  baseDamage: 1

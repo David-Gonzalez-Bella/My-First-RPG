@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 public class Health : MonoBehaviour
 {
     public int baseHealth;
     private int currentHealth;
+    private Experience playerExp;
     public Image healthBar;
     public UnityEvent dieEvent; //This is not really necessary, we could do it with a reference to the GameObject´s animator, but its usefull to have an example of UnityEvents
+
     public int CurrentHealth
     {
         get
@@ -37,13 +40,14 @@ public class Health : MonoBehaviour
     void Start()
     {
         currentHealth = baseHealth;
+        playerExp = GetComponent<Experience>();
+        UpdateHealthBar();
     }
 
     public void ModifyHealth(int quantity) //This metod will be used to take damage or to heal
     {
         CurrentHealth += quantity;
-        if (healthBar != null)
-            ModifyHealthBar();
+        UpdateHealthBar();
     }
 
     public void DestroyCharacter() //Called during the character´s death animation
@@ -51,8 +55,22 @@ public class Health : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    public void ModifyHealthBar()
-            {
-        healthBar.fillAmount = (float)CurrentHealth / baseHealth;
+    public void UpdateHealthBar()
+    {
+        if (healthBar != null)
+        {
+            healthBar.fillAmount = (float)CurrentHealth / baseHealth;
+            Bars_Texts.sharedInstance.UpdateHealthBarTxt(this);
+        }
+    }
+
+    public void ModifyBaseHealth(int quantity)
+    {
+        int oldBaseHealth = baseHealth;
+        baseHealth += quantity;
+        CurrentHealth = (int)(CurrentHealth * baseHealth / oldBaseHealth);
+        UpdateHealthBar();
+        Atributes_Texts.sharedInstance.UpdateAtribsTexts(baseHealth);
+        Bars_Texts.sharedInstance.UpdateHealthBarTxt(this);
     }
 }
