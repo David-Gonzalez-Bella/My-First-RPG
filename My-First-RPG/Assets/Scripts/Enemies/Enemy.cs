@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour //This contains the IA and the atributes every enemy will have
 {
@@ -84,7 +85,7 @@ public class Enemy : MonoBehaviour //This contains the IA and the atributes ever
     {
         anim.SetBool(walkHash, true);
         FlipSprite();
-        this.transform.position += (Vector3)input.playerDirection * atrib.speed * Time.deltaTime;
+        this.transform.position += (Vector3)input.playerDirection.normalized * atrib.speed * Time.deltaTime; //We normalize the playerDirection to get the DIRECTION from it, and the magnitude will be que atrib.speed
     }
 
     //Virtual methods
@@ -107,6 +108,11 @@ public class Enemy : MonoBehaviour //This contains the IA and the atributes ever
         dead = true;
         col.enabled = false;
         anim.SetBool(deadHash, true); //This triggers the animation, and on the last frame the character will be destroyed (so did we configured it in the animator interface)
+    }
+
+    public void DropExperience() //Will be called when the enemy dies, as part of the Unity Event "dieEvent" in the Health script
+    {
+        GameManager.sharedInstance.player.GetComponent<Experience>().experience += exp;
     }
 }
 

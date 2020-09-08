@@ -13,7 +13,7 @@ public class TextHitGenerator : MonoBehaviour
             sharedInstance = this;
     }
 
-    public void CreateTextHit(Color color, Transform parent, int damage)
+    public void CreateTextHit(Color color, Transform parent, string damage)
     {
         textHit.GetComponent<TextMesh>().color = color;
         textHit.GetComponent<TextMesh>().text = damage.ToString();
