@@ -20,8 +20,10 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     private Animator anim;
+    private CapsuleCollider2D col;
 
     public Atributes atrib;
+    public LayerMask interactLayer;
     private Attack atck;
 
     public GameObject swordFlash;
@@ -30,6 +32,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        col = GetComponent<CapsuleCollider2D>();
         atck = GetComponent<Attack>();
     }
 
@@ -75,5 +78,11 @@ public class PlayerController : MonoBehaviour
         //newPosition = transform.position + new Vector3(moveX * speed * Time.deltaTime, moveY * speed * Time.deltaTime, 0);
         movement = new Vector2(moveX, moveY) * atrib.speed; //* Time.deltaTime; -> Here i dont multiply by Time.deltaTime, as i am change the rigidbody´s velocity directly. It is not a manual update of the position, as i was doing before
         rb.velocity = movement; /*transform.position = newPosition;*/
+    }
+
+    public RaycastHit2D[] Interactuables() //Returns the objects the player can interact with (that means, those that are within its CircleCastAll range)
+    {
+        RaycastHit2D[] interactuables = Physics2D.CircleCastAll(this.transform.position, col.size.x, InputPlayer.sharedInstance.faceDirection.normalized, 0.4f, interactLayer);
+        return interactuables;
     }
 }

@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1459001892164163866}
   - component: {fileID: 1459001892164163846}
   - component: {fileID: 1459001892164163865}
-  - component: {fileID: 1459001892164163845}
-  m_Layer: 8
+  - component: {fileID: 3827369757603005232}
+  m_Layer: 11
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,10 +146,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseHealth: 10
+  healthBar: {fileID: 0}
   dieEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1459001892164163845
+--- !u!114 &3827369757603005232
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,6 +159,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1459001892164163844}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c934f988db99ff54f8fef0887ca2cd76, type: 3}
+  m_Script: {fileID: 11500000, guid: 11a018cca48709a41a7fcbdad713b27a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
