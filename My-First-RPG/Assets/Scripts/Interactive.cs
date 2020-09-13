@@ -7,12 +7,12 @@ using System;
 
 public class Interactive : MonoBehaviour, IPointerDownHandler
 {
-    private Collider2D col;
+    protected Collider2D col;
     //public UnityEvent OnInteractive;
     public event Action OnInteractive;
-    private PlayerController player;
+    protected PlayerController player;
 
-    private void Awake()
+    private void Start()
     {
         col = GetComponent<Collider2D>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
@@ -32,8 +32,13 @@ public class Interactive : MonoBehaviour, IPointerDownHandler
         {
             if(interactObj.collider.gameObject == this.gameObject) //If this gameObject is within the collection of interactuable objects detected bi the CircleCastAll...
             {
-                Debug.Log("Haciendo click!!");
+                Interact();
             }
         }   
+    }
+
+    public virtual void Interact()
+    {
+        Debug.Log("Clicking!!");
     }
 }
