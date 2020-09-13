@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 using TMPro;
 
 public class Experience : MonoBehaviour
@@ -11,7 +12,7 @@ public class Experience : MonoBehaviour
     private float porcentageExp = 0.0f;
     public int atributePoints { get; private set; } = 0;
     public Image experienceBar;
-    public ActiveButton[] UI_Buttons;
+    public  List <ActiveButton> UI_Buttons;
 
     [SerializeField] private TMP_Text levelImg;
 
@@ -81,5 +82,11 @@ public class Experience : MonoBehaviour
         {
             button.EnableDisableButton(atributePoints);
         }
+    }
+
+    [ContextMenu("Autofill Buttons")]
+    public void AutofillButtons()
+    {
+        UI_Buttons = FindObjectsOfType<ActiveButton>().Where(t => t.name.Contains("PointUp")).ToList();
     }
 }
