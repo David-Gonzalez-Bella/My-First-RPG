@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 movement;
     private bool attack;
     private bool inventary;
+    public AudioSource attackAudioSource;
+    public AudioSource stepsAudioSource;
 
     private int xHashCode;
     private int yHashCode;
@@ -42,6 +44,7 @@ public class PlayerController : MonoBehaviour
         yHashCode = Animator.StringToHash("Y");
         runningHashCode = Animator.StringToHash("Running");
         attackHashCode = Animator.StringToHash("Attack");
+        anim.SetFloat(yHashCode, -1);
     }
 
     void Update()
@@ -56,6 +59,8 @@ public class PlayerController : MonoBehaviour
             anim.SetFloat(xHashCode, moveX);
             anim.SetFloat(yHashCode, moveY);
             anim.SetFloat(runningHashCode, Mathf.Abs(moveX) + Mathf.Abs(moveY));
+            if (!stepsAudioSource.isPlaying)
+                StartCoroutine(PlayStepsSound()); 
         }
         if (attack) //If we pressed the attack button/s
         {
@@ -71,6 +76,7 @@ public class PlayerController : MonoBehaviour
     public void AttackAnimEvent() //Called during the attack animation
     {
         atck.PhysicalAttack(InputPlayer.sharedInstance.faceDirection, atrib.damage, swordFlash); //This will send the direction we are facing ((1, 0), (0, 1), (-1, 0) or (0, -1))
+        attackAudioSource.Play();
     }
 
     private void FixedUpdate()
@@ -84,5 +90,11 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit2D[] interactuables = Physics2D.CircleCastAll(this.transform.position, col.size.x, InputPlayer.sharedInstance.faceDirection.normalized, 0.4f, interactLayer);
         return interactuables;
+    }
+
+    IEnumerator PlayStepsSound()
+    {
+        stepsAudioSource.Play();
+        yield return new WaitWhile(() => stepsAudioSource.isPlaying);
     }
 }

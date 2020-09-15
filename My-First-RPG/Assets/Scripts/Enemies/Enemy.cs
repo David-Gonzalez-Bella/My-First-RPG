@@ -14,18 +14,16 @@ public class Enemy : MonoBehaviour //This contains the IA and the atributes ever
     protected SpriteRenderer spr;
     protected CapsuleCollider2D col;
 
-    private int attackHash;
-    private int deadHash;
-    //private int blockHash;
-    private int walkHash;
+    protected int attackHash;
+    protected int deadHash;
+    protected int walkHash;
 
-    private bool attacking = false;
-    //private bool inCombat = false;
-    private bool dead = false;
+    protected bool attacking = false;
+    protected bool dead = false;
     protected Vector2 attackDirection;
 
-    [SerializeField] private float detectionDistance; //From this distance on, the enemy will detect the player
-    [SerializeField] private float attackingDistance; //From this distance on, the enemy will attack the player
+    [SerializeField] protected float detectionDistance; //From this distance on, the enemy will detect the player
+    [SerializeField] protected float attackingDistance; //From this distance on, the enemy will attack the player
 
     private void Awake()
     {
@@ -41,47 +39,29 @@ public class Enemy : MonoBehaviour //This contains the IA and the atributes ever
         attackHash = Animator.StringToHash("Attack");
         deadHash = Animator.StringToHash("Dead");
         walkHash = Animator.StringToHash("Walk");
-        //blockHash = Animator.StringToHash("Block");
     }
+
+    protected virtual void Behaviour() { }
 
     private void Update() //Every enemy shall check its behaviour every frame
     {
         Behaviour(); //The knight´s behaviour will be checked every frame
     }
-    protected void Behaviour()
-    {
-        if (!dead)
-        {
-            if (!attacking && input.distanceMagnitude < attackingDistance) //If the enemy is not attacking and the distance to the player is less than the attacking distance it means that he shall attack the player
-            {
-                AttackPlayer();
-            }
-            else if (!attacking && (/*inCombat ||*/ input.distanceMagnitude < detectionDistance))
-            {
-                ChasePlayer();
-            }
-            else //If the player is out of range he goes to idle animation
-            {
-                anim.SetBool(walkHash, false);
-            }
-        }
-    }
-
-    private void AttackPlayer()
+   
+    protected void AttackPlayer()
     {
         int attackChance = Random.Range(0, 100);
         anim.SetBool(walkHash, false); //When the enemy is in attacking state he will stop walking
         if (attackChance > 95) //The chance has to be very low, because this method is executing a lot of times per frame, so we must discriminate a lot of numbers
         {
             attackDirection = input.playerDirection; //Just when the knight decides to attack the direction he is facing will be decided
-            //inCombat = true;
             attacking = true;
             FlipSprite();
             anim.SetTrigger(attackHash);
         }
     }
 
-    private void ChasePlayer()
+    protected void ChasePlayer()
     {
         anim.SetBool(walkHash, true);
         FlipSprite();
