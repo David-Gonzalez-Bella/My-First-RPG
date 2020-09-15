@@ -59,6 +59,7 @@ public class Inventary : MonoBehaviour
             } 
         }
         return true;
+
     }
 
 }
