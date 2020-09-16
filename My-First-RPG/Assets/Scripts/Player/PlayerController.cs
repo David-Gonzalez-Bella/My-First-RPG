@@ -12,7 +12,9 @@ public class PlayerController : MonoBehaviour
     private bool attack;
     private bool inventary;
     public AudioSource attackAudioSource;
+    public AudioSource damgeAudioSource;
     public AudioSource stepsAudioSource;
+    public AudioSource dashAudioSource;
 
     private int xHashCode;
     private int yHashCode;
@@ -27,6 +29,7 @@ public class PlayerController : MonoBehaviour
     public Atributes atrib;
     public LayerMask interactLayer;
     private Attack atck;
+    private Abilities abilities;
 
     public GameObject swordFlash;
 
@@ -36,6 +39,7 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         col = GetComponent<CapsuleCollider2D>();
         atck = GetComponent<Attack>();
+        abilities = GetComponent<Abilities>();
     }
 
     void Start()
@@ -60,7 +64,7 @@ public class PlayerController : MonoBehaviour
             anim.SetFloat(yHashCode, moveY);
             anim.SetFloat(runningHashCode, Mathf.Abs(moveX) + Mathf.Abs(moveY));
             if (!stepsAudioSource.isPlaying)
-                StartCoroutine(PlayStepsSound()); 
+                StartCoroutine(PlayStepsSound());
         }
         if (attack) //If we pressed the attack button/s
         {
@@ -81,9 +85,20 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //newPosition = transform.position + new Vector3(moveX * speed * Time.deltaTime, moveY * speed * Time.deltaTime, 0);
-        movement = new Vector2(moveX, moveY) * atrib.speed; //* Time.deltaTime; -> Here i dont multiply by Time.deltaTime, as i am change the rigidbody´s velocity directly. It is not a manual update of the position, as i was doing before
-        rb.velocity = movement; /*transform.position = newPosition;*/
+        if (!abilities.dashing)
+        {
+            //newPosition = transform.position + new Vector3(moveX * speed * Time.deltaTime, moveY * speed * Time.deltaTime, 0);
+            if (!InputPlayer.sharedInstance.ability1) // If the player isnt dashing
+            {
+                movement = new Vector2(moveX, moveY) * atrib.speed; //* Time.deltaTime; -> Here i dont multiply by Time.deltaTime, as i am change the rigidbody´s velocity directly. It is not a manual update of the position, as i was doing before
+                rb.velocity = movement; /*transform.position = newPosition;*/
+            }
+            else if ((moveX != 0 || moveY != 0) && InputPlayer.sharedInstance.ability1 && !abilities.dashing)
+            {
+                dashAudioSource.Play();
+                abilities.Dash(InputPlayer.sharedInstance.faceDirection.normalized, rb);
+            }
+        }
     }
 
     public RaycastHit2D[] Interactuables() //Returns the objects the player can interact with (that means, those that are within its CircleCastAll range)

@@ -11,10 +11,14 @@ public class AudioManager : MonoBehaviour
     public AudioSource fireballAttack;
     public AudioSource stepsSound;
     public AudioSource backgroundMusic;
+    public AudioSource enemyDamage;
+    public AudioSource enemySpawn;
 
     public event Action OnPlaySwordSound;
     public event Action OnPlayFireballSound;
     public event Action OnStepsSound;
+    public event Action OnEnemyDamageSound;
+    public event Action OnEnemySpawnSound;
 
     private void Awake()
     {
@@ -27,6 +31,7 @@ public class AudioManager : MonoBehaviour
         OnPlaySwordSound?.Invoke();
         OnPlayFireballSound?.Invoke();
         OnStepsSound?.Invoke();
+        OnEnemyDamageSound?.Invoke();
+        OnEnemySpawnSound?.Invoke();
     }
-
 }

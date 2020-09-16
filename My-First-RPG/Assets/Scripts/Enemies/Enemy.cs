@@ -81,6 +81,7 @@ public class Enemy : MonoBehaviour //This contains the IA and the atributes ever
     public void DissappearEffect()
     {
         EnemySpawner.sharedInstance.InstantiateSpawnEffect(this);
+        AudioManager.sharedInstance.OnEnemySpawnSound += EnemySpawner.sharedInstance.PlaySpawnSound;
     }
 
     public void Die() //This function will be called in the "Health" script, thanks to the Unity Event
