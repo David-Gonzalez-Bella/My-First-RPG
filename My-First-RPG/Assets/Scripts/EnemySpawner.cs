@@ -22,13 +22,14 @@ public class EnemySpawner : MonoBehaviour
     public void InstantiateSpawnEffect(Enemy enemy)
     {
         Instantiate(spawnEffect, enemy.transform.position + new Vector3(0f, -0.5f, 0f), Quaternion.identity);
+        AudioManager.sharedInstance.OnEnemySpawnSound += PlaySpawnSound;
     }
 
     IEnumerator SpawnEnemy()
     {
         for (int i = 0; i < enemies.Length; i++)
         {
-            InstantiateSpawnEffect(enemies[i]);
+            InstantiateSpawnEffect(enemies[i]);  
         }
 
         yield return new WaitForSeconds(0.7f);
@@ -37,5 +38,11 @@ public class EnemySpawner : MonoBehaviour
         {
             Instantiate(enemies[i], this.transform);
         }
+    }
+
+    public void PlaySpawnSound()
+    {
+        AudioManager.sharedInstance.enemySpawn.Play();
+        AudioManager.sharedInstance.OnEnemySpawnSound -= PlaySpawnSound;
     }
 }

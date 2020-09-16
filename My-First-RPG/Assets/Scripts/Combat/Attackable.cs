@@ -24,6 +24,8 @@ public class Attackable : MonoBehaviour
     { 
         StartCoroutine(TakeDamage(damage));
         rb.AddForce(attackDirection * damage * 150, ForceMode2D.Impulse); //When attacked, the object will be pushed back as well
+        if(this.tag == "Player") { PlayPlayerDamageSound(); }
+        else { AudioManager.sharedInstance.OnEnemyDamageSound += PlayEnemyDamageSound; }
     }
 
     //Coroutinesç
@@ -34,5 +36,16 @@ public class Attackable : MonoBehaviour
         TextHitGenerator.sharedInstance.CreateTextHit(Color.red, this.transform, (-damage).ToString());
         yield return new WaitForSeconds(0.15f);
         spr.color = Color.white;
+    }
+
+    public void PlayPlayerDamageSound()
+    {
+        GameManager.sharedInstance.player.GetComponent<PlayerController>().damgeAudioSource.Play();
+    }
+
+    public void PlayEnemyDamageSound()
+    {
+        AudioManager.sharedInstance.enemyDamage.Play();
+        AudioManager.sharedInstance.OnEnemyDamageSound -= PlayEnemyDamageSound;
     }
 }
