@@ -10,6 +10,7 @@ public class Atributes_Texts : MonoBehaviour
 
     [SerializeField] private Atributes playerAtribs;
     [SerializeField] private Health playerHealth;
+    [SerializeField] private Mana playerMana;
     [SerializeField] private TMP_Text lvlAtribText;
     [SerializeField] private TMP_Text attackAtribTxt;
     [SerializeField] private TMP_Text velocityAtribTxt;
@@ -29,7 +30,8 @@ public class Atributes_Texts : MonoBehaviour
     private void Start()
     {
         UpdateAtribsTexts(playerAtribs.damage, playerAtribs.speed);
-        UpdateAtribsTexts(playerHealth.baseHealth);
+        UpdateAtribsTexts(playerHealth);
+        UpdateAtribsTexts(playerMana);
     }
 
     public void UpdateAtribsTexts(int level, int atribPoints)
@@ -42,8 +44,12 @@ public class Atributes_Texts : MonoBehaviour
         attackAtribTxt.text = atckPoints.ToString();
         velocityAtribTxt.text = ((int)velocityPoints).ToString();
     }
-    public void UpdateAtribsTexts(int health)
+    public void UpdateAtribsTexts(Health health)
     {
-        healthAtribTxt.text = health.ToString();
+        healthAtribTxt.text = health.baseHealth.ToString();
+    }
+    public void UpdateAtribsTexts(Mana mana)
+    {
+        magicAtribTxt.text = mana.baseMana.ToString();
     }
 }

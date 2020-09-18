@@ -25,6 +25,10 @@ public class Bars_Texts : MonoBehaviour
     {
         healthBarTxt.text = health.CurrentHealth.ToString() + " / " + health.baseHealth.ToString();
     }
+    public void UpdateManaBarTxt(Mana mana)
+    {
+        magicBarTxt.text = mana.CurrentMana.ToString() + " / " + mana.baseMana.ToString();
+    }
     public void UpdateExpBarTxt(Experience exp)
     {
         expBarTxt.text = exp.experience.ToString() + " / " + exp.nextLevelExp.ToString();

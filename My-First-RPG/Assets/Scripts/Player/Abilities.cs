@@ -8,16 +8,19 @@ public class Abilities : MonoBehaviour
     private float dashTime = 0.0f;
     public float startDashTime;
     private Vector2 dashDirection;
+    [HideInInspector] public int dashManaCost = 5;
     [HideInInspector] public bool dashing = false;
 
     private Rigidbody2D rb;
     private TrailRenderer trail;
+    private Mana mana;
 
     private float trailColorAlpha = 0.7f;
 
     private void Awake()
     {
         trail = GetComponent<TrailRenderer>();
+        mana = GetComponent<Mana>();
     }
 
     private void Start()
@@ -33,7 +36,7 @@ public class Abilities : MonoBehaviour
         {
             if (dashTime <= 0) //If we have ended dashing
             {
-                if(trailColorAlpha > 0.0f)
+                if (trailColorAlpha > 0.0f)
                 {
                     trailColorAlpha -= 0.1f;
                     trail.startColor = new Color(trail.startColor.r, trail.startColor.g, trail.startColor.b, trailColorAlpha);
@@ -63,6 +66,7 @@ public class Abilities : MonoBehaviour
         dashDirection = playerDashDirection;
         dashing = true;
         trail.enabled = true;
+        mana.ModifyMana(-dashManaCost);
     }
 }
 

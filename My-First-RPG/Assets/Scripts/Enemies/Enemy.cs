@@ -88,6 +88,7 @@ public class Enemy : MonoBehaviour //This contains the IA and the atributes ever
     {
         dead = true;
         col.enabled = false;
+        GameManager.sharedInstance.player.GetComponent<Mana>().CurrentMana += 3;
         anim.SetBool(deadHash, true); //This triggers the animation, and on the last frame the character will be destroyed (so did we configured it in the animator interface)
     }
 

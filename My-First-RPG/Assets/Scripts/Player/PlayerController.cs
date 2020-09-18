@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask interactLayer;
     private Attack atck;
     private Abilities abilities;
+    private Mana mana;
 
     public GameObject swordFlash;
 
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour
         col = GetComponent<CapsuleCollider2D>();
         atck = GetComponent<Attack>();
         abilities = GetComponent<Abilities>();
+        mana = GetComponent<Mana>();
     }
 
     void Start()
@@ -93,7 +95,7 @@ public class PlayerController : MonoBehaviour
                 movement = new Vector2(moveX, moveY) * atrib.speed; //* Time.deltaTime; -> Here i dont multiply by Time.deltaTime, as i am change the rigidbody´s velocity directly. It is not a manual update of the position, as i was doing before
                 rb.velocity = movement; /*transform.position = newPosition;*/
             }
-            else if ((moveX != 0 || moveY != 0) && InputPlayer.sharedInstance.ability1 && !abilities.dashing)
+            else if ((moveX != 0 || moveY != 0) && InputPlayer.sharedInstance.ability1 && !abilities.dashing && mana.CurrentMana >= abilities.dashManaCost)
             {
                 dashAudioSource.Play();
                 abilities.Dash(InputPlayer.sharedInstance.faceDirection.normalized, rb);
