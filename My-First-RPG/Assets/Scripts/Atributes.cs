@@ -11,34 +11,12 @@ public class Atributes : ScriptableObject //Attributes is only a bunch of data, 
     [Tooltip("Character´s damage")]
     [SerializeField] private int baseDamage;
 
-    //public enum Atribute { speed, damage, health };
-
     private int speedIncrease = 0;
     private int damageIncrease = 0;
 
     public float speed { get { return baseSpeed + speedIncrease; } }
     public int damage { get { return baseDamage + damageIncrease; } }
 
-    /*
-       public void ModifyAttribute(Atribute atribute, int quantity)
-       {
-
-           switch (atribute)
-           {
-               case Atribute.speed:
-                   if (speedIncrease + quantity >= 0)
-                       speedIncrease += quantity;
-                   break;
-               case Atribute.damage:
-                   if (damageIncrease + quantity >= 0)
-                       damageIncrease += quantity;
-                   break;
-               case Atribute.health:
-
-                   break;
-           }
-       }
-   */
     public void ModifyBaseSpeed()
     {
         baseSpeed++;

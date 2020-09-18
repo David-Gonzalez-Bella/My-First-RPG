@@ -8,8 +8,7 @@ using TMPro;
 public class Health : MonoBehaviour
 {
     public int baseHealth;
-    private int currentHealth;
-    private Experience playerExp;
+    private int currentHealth = 0;
     public Image healthBar;
     public UnityEvent dieEvent; //This is not really necessary, we could do it with a reference to the GameObject´s animator, but its usefull to have an example of UnityEvents
 
@@ -34,20 +33,19 @@ public class Health : MonoBehaviour
                 currentHealth = 0;
                 dieEvent?.Invoke(); //The '?' check is just to avoid a possible error in case that the envent wasn´t dropped in the editor, but it will always invoke 
             }
+            UpdateHealthBar();
         }
     }
 
     void Start()
     {
-        currentHealth = baseHealth;
-        playerExp = GetComponent<Experience>();
-        UpdateHealthBar();
+        CurrentHealth += baseHealth;
     }
 
     public void ModifyHealth(int quantity) //This metod will be used to take damage or to heal
     {
         CurrentHealth += quantity;
-        UpdateHealthBar();
+        //UpdateHealthBar();
     }
 
     public void DestroyCharacter() //Called during the character´s death animation
@@ -69,8 +67,6 @@ public class Health : MonoBehaviour
         int oldBaseHealth = baseHealth;
         baseHealth += quantity;
         CurrentHealth = (int)(CurrentHealth * baseHealth / oldBaseHealth);
-        UpdateHealthBar();
-        Atributes_Texts.sharedInstance.UpdateAtribsTexts(baseHealth);
-        Bars_Texts.sharedInstance.UpdateHealthBarTxt(this);
+        Atributes_Texts.sharedInstance.UpdateAtribsTexts(this);
     }
 }
