@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<ArrayOfDialogue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Dialogue>
+    <lines>
+      <string>hi!</string>
+      <string>how are you?</string>
+      <string>bye!</string>
+    </lines>
+    <id>firstM_S</id>
+  </Dialogue>
+  <Dialogue>
+    <lines>
+      <string>thankyou1</string>
+      <string>thankyou3</string>
+      <string>thankyou3</string>
+    </lines>
+    <id>firstM_E</id>
+  </Dialogue>
+</ArrayOfDialogue>

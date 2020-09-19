@@ -357,7 +357,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextLevelExp: 0
   experienceBar: {fileID: 0}
-  UI_Buttons: []
+  UI_Buttons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   levelImg: {fileID: 0}
 --- !u!114 &984113853817007655
 MonoBehaviour:
@@ -371,7 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eb8e319f6f276a408c4eb9faa0820c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseMana: 0
+  baseMana: 20
   manaBar: {fileID: 0}
 --- !u!114 &8557380841596067992
 MonoBehaviour:
@@ -387,6 +391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dashSpeed: 10
   startDashTime: 0.1
+  dashManaCost: 5
   dashing: 0
 --- !u!82 &474895342
 AudioSource:
@@ -688,8 +693,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bf6e2f5ec46617a48aed59fa9e7fb1ed, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.35
+  m_Pitch: 1.6
   Loop: 0
   Mute: 0
   Spatialize: 0
