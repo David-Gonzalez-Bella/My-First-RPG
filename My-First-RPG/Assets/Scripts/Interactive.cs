@@ -5,11 +5,11 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using System;
 
-public class Interactive : MonoBehaviour, IPointerDownHandler
+public class Interactive : MonoBehaviour
 {
     protected Collider2D col;
     //public UnityEvent OnInteractive;
-    public event Action OnInteractive;
+    //public event Action OnInteractive;
     protected PlayerController player;
 
     private void Start()
@@ -18,16 +18,9 @@ public class Interactive : MonoBehaviour, IPointerDownHandler
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnMouseDown() //The interface´s method must be implemented (ir occurs when we click it)*/
     {
-        if (other.tag == "Player")
-        {
-
-        }
-    }
-
-    public void OnPointerDown(PointerEventData eventData) //The interface´s method must be implemented (ir occurs when we click it)
-    {
+        Debug.Log("PointerDown");
         foreach (RaycastHit2D interactObj in player.Interactuables())
         {
             if(interactObj.collider.gameObject == this.gameObject) //If this gameObject is within the collection of interactuable objects detected bi the CircleCastAll...
@@ -40,5 +33,10 @@ public class Interactive : MonoBehaviour, IPointerDownHandler
     public virtual void Interact()
     {
         Debug.Log("Clicking!!");
+    }
+
+    public void OnMove(AxisEventData eventData)
+    {
+        throw new NotImplementedException();
     }
 }
