@@ -32,19 +32,16 @@ public class DialogueManager : MonoBehaviour
     }
 
     private void Initialize()
-    {
-        //Inicialize dialogues
-        firstMissionStart = new Dialogue { lines = new string[] { "hi!", "how are you?", "bye!" }, id = "LostWarrior_S" };
-        firstMissionEnd = new Dialogue { lines = new string[] { "thankyou1", "thankyou3", "thankyou3" }, id = "LostWarrior_E" };
-
-        //Serialize them, which means, create a xml document with its information if it does not exist already
+    {   
         if (!System.IO.File.Exists("Assets/Dialogues/dialogues.xml"))
         {
-            Debug.Log("Created!");
+            //Inicialize dialogues
+            firstMissionStart = new Dialogue { lines = new string[] { "hi!", "how are you?", "bye!" }, id = "LostWarrior_S" };
+            firstMissionEnd = new Dialogue { lines = new string[] { "thankyou1", "thankyou3", "thankyou3" }, id = "LostWarrior_E" };
+
+            //Serialize them, which means, create a xml document with its information if it does not exist already
             Dialogue[] xmlFile = new Dialogue[] { firstMissionStart, firstMissionEnd };
             SerializerXML.Serialize("Assets/Dialogues/dialogues.xml", xmlFile);
-        }
-
-        
+        }    
     }
 }

@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     private Attack atck;
     private Abilities abilities;
     private Mana mana;
+    public List<Mission> activeMissions = new List<Mission>();
 
     public GameObject swordFlash;
 
@@ -55,27 +56,30 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        moveX = InputPlayer.sharedInstance.horizontal;
-        moveY = InputPlayer.sharedInstance.vertical;
-        attack = InputPlayer.sharedInstance.basicAtk;
-        inventary = InputPlayer.sharedInstance.inventary;
+        if (!DialogueBox.sharedInstance.talking)
+        {
+            moveX = InputPlayer.sharedInstance.horizontal;
+            moveY = InputPlayer.sharedInstance.vertical;
+            attack = InputPlayer.sharedInstance.basicAtk;
+            inventary = InputPlayer.sharedInstance.inventary;
 
-        if (moveX != 0 || moveY != 0) //It will update the state only if the character moves. Otherwise, it will stay in the last state it entered (the knight will look at the direction he was lastly told to move to)
-        {
-            anim.SetFloat(xHashCode, moveX);
-            anim.SetFloat(yHashCode, moveY);
-            anim.SetFloat(runningHashCode, Mathf.Abs(moveX) + Mathf.Abs(moveY));
-            if (!stepsAudioSource.isPlaying)
-                StartCoroutine(PlayStepsSound());
-        }
-        if (attack) //If we pressed the attack button/s
-        {
-            //atck.ActionAttack(InputPlayer.sharedInstance.faceDirection, atrib.damage); //This will send the direction we are facing ((1, 0), (0, 1), (-1, 0) or (0, -1))
-            anim.SetTrigger(attackHashCode);
-        }
-        if (inventary)
-        {
-            PanelsMenu.sharedInstance.OpenClosePanels();
+            if (moveX != 0 || moveY != 0) //It will update the state only if the character moves. Otherwise, it will stay in the last state it entered (the knight will look at the direction he was lastly told to move to)
+            {
+                anim.SetFloat(xHashCode, moveX);
+                anim.SetFloat(yHashCode, moveY);
+                anim.SetFloat(runningHashCode, Mathf.Abs(moveX) + Mathf.Abs(moveY));
+                if (!stepsAudioSource.isPlaying)
+                    StartCoroutine(PlayStepsSound());
+            }
+            if (attack) //If we pressed the attack button/s
+            {
+                //atck.ActionAttack(InputPlayer.sharedInstance.faceDirection, atrib.damage); //This will send the direction we are facing ((1, 0), (0, 1), (-1, 0) or (0, -1))
+                anim.SetTrigger(attackHashCode);
+            }
+            if (inventary)
+            {
+                PanelsMenu.sharedInstance.OpenClosePanels();
+            }
         }
     }
 
@@ -103,9 +107,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public RaycastHit2D[] Interactuables() //Returns the objects the player can interact with (that means, those that are within its CircleCastAll range)
+    //public RaycastHit2D[] Interactuables() //Returns the objects the player can interact with (that means, those that are within its CircleCastAll range)
+    //{
+    //    RaycastHit2D[] interactuables = Physics2D.CircleCastAll(this.transform.position, col.size.x, InputPlayer.sharedInstance.faceDirection.normalized, 1.0f, interactLayer);
+    //    return interactuables;
+    //}
+    public Collider2D[] Interactuables() //Returns the objects the player can interact with (that means, those that are within its CircleCastAll range)
     {
-        RaycastHit2D[] interactuables = Physics2D.CircleCastAll(this.transform.position, col.size.x, InputPlayer.sharedInstance.faceDirection.normalized, 0.5f, interactLayer);
+        Collider2D[] interactuables = Physics2D.OverlapCircleAll(this.transform.position, col.size.x, interactLayer);
         return interactuables;
     }
 

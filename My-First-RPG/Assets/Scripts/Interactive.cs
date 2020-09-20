@@ -20,10 +20,9 @@ public class Interactive : MonoBehaviour
 
     public void OnMouseDown() //The interface´s method must be implemented (ir occurs when we click it)*/
     {
-        Debug.Log("PointerDown");
-        foreach (RaycastHit2D interactObj in player.Interactuables())
+        foreach (Collider2D interactObj in player.Interactuables())
         {
-            if(interactObj.collider.gameObject == this.gameObject) //If this gameObject is within the collection of interactuable objects detected bi the CircleCastAll...
+            if(interactObj.gameObject == this.gameObject) //If this gameObject is within the collection of interactuable objects detected bi the CircleCastAll...
             {
                 Interact();
             }
