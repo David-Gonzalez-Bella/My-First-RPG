@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<Dialogue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <lines>
-    <string>hi!</string>
-    <string>how are you?</string>
-    <string>bye!</string>
-  </lines>
-  <id>trial</id>
-</Dialogue>

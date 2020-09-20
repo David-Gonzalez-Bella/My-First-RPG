@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<ArrayOfMission xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Mission>
+    <description>Kill 2 enemies</description>
+    <id>FirstMission</id>
+    <type>Recollection</type>
+    <quantity>2</quantity>
+    <progress>0</progress>
+    <completed>false</completed>
+  </Mission>
+  <Mission>
+    <description>Description</description>
+    <id>Mission</id>
+    <type>Type</type>
+    <quantity>0</quantity>
+    <progress>0</progress>
+    <completed>false</completed>
+  </Mission>
+  <Mission>
+    <description>Description</description>
+    <id>Mission</id>
+    <type>Type</type>
+    <quantity>0</quantity>
+    <progress>0</progress>
+    <completed>false</completed>
+  </Mission>
+  <Mission>
+    <description>Description</description>
+    <id>Mission</id>
+    <type>Type</type>
+    <quantity>0</quantity>
+    <progress>0</progress>
+    <completed>false</completed>
+  </Mission>
+</ArrayOfMission>

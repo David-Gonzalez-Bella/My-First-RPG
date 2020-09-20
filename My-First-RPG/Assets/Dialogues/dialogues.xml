@@ -2,18 +2,18 @@
 <ArrayOfDialogue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Dialogue>
     <lines>
-      <string>hi!</string>
-      <string>how are you?</string>
-      <string>bye!</string>
+      <string>Oh god, I' so relieved to see someone else here... Would you lend me a hand? I came here a few days ago, but I got lost and those monsters won't let me go...</string>
+      <string>Would you mind... you know... slaughtering as many as them as you can? With five of those creeps down I should be able to escape this living hell. </string>
+      <string>Kill five of those monsters that live around here please, that's all I ask for... May you have luck in your quest...</string>
     </lines>
-    <id>firstM_S</id>
+    <id>LostWarrior_S</id>
   </Dialogue>
   <Dialogue>
     <lines>
-      <string>thankyou1</string>
-      <string>thankyou3</string>
-      <string>thankyou3</string>
+      <string>You really are my saviour! Now I can finally escape this place.</string>
+      <string>H-hey, did you hear that? It sounded like rocks breaking to pieces.</string>
+      <string>You should go investigate the path that used to be blocked by rocks, I think you may be able to go over there now.</string>
     </lines>
-    <id>firstM_E</id>
+    <id>LostWarrior_E</id>
   </Dialogue>
 </ArrayOfDialogue>
