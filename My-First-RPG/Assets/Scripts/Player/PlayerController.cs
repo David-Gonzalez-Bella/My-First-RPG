@@ -52,6 +52,9 @@ public class PlayerController : MonoBehaviour
         runningHashCode = Animator.StringToHash("Running");
         attackHashCode = Animator.StringToHash("Attack");
         anim.SetFloat(yHashCode, -1);
+
+        atrib.baseDamage = 4;
+        atrib.baseDamage = 1;
     }
 
     void Update()

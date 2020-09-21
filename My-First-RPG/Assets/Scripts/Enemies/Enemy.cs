@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour //This contains the IA and the atributes ever
     public Atributes atrib; //Evey enemy has his basic atributes (for a more specific one they'll have them in their own script)
     public int exp;
 
+    private TriggerSpawner parent;
+
     protected InputEnemy input;
     protected Attack atk; //The EnemyKnight can attack our player
     protected Animator anim;
@@ -32,6 +34,7 @@ public class Enemy : MonoBehaviour //This contains the IA and the atributes ever
         anim = this.GetComponent<Animator>();
         col = this.GetComponent<CapsuleCollider2D>();
         spr = this.GetComponentInChildren<SpriteRenderer>();
+        parent = this.gameObject.GetComponentInParent<TriggerSpawner>();
     }
 
     private void Start()
@@ -80,7 +83,7 @@ public class Enemy : MonoBehaviour //This contains the IA and the atributes ever
 
     public void DissappearEffect()
     {
-        EnemySpawner.sharedInstance.InstantiateSpawnEffect(this);
+        EnemySpawner.sharedInstance.InstantiateSpawnEffect(this, this.transform.position);
         AudioManager.sharedInstance.OnEnemySpawnSound += EnemySpawner.sharedInstance.PlaySpawnSound;
     }
 
@@ -95,6 +98,12 @@ public class Enemy : MonoBehaviour //This contains the IA and the atributes ever
     public void DropExperience() //Will be called when the enemy dies, as part of the Unity Event "dieEvent" in the Health script
     {
         GameManager.sharedInstance.player.GetComponent<Experience>().experience += exp;
+    }
+
+    public void DeadInZone()
+    {
+        parent.deadEnemies++;
+        parent.OnEnemyDied -= this.GetComponent<Enemy>().DeadInZone;
     }
 }
 

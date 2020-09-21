@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 1459001892164163847}
   - component: {fileID: 1459001892164163866}
   - component: {fileID: 1459001892164163846}
-  - component: {fileID: 1459001892164163865}
-  - component: {fileID: 3827369757603005232}
   m_Layer: 11
   m_Name: Box
   m_TagString: Untagged
@@ -74,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: -808244081
   m_SortingLayer: 2
   m_SortingOrder: 2
-  m_Sprite: {fileID: -8770923095257157617, guid: 835092dd0ce03d442864cff0ebe0a2d5,
+  m_Sprite: {fileID: 5747173110019870749, guid: 835092dd0ce03d442864cff0ebe0a2d5,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -133,32 +131,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1459001892164163865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1459001892164163844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33d484332f2d5ac4bbd3b5a3e559edd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseHealth: 10
-  healthBar: {fileID: 0}
-  dieEvent:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &3827369757603005232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1459001892164163844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11a018cca48709a41a7fcbdad713b27a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

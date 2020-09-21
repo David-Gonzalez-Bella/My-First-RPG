@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public static EnemySpawner sharedInstance { get; private set; }
-    public Enemy[] enemies;
     public GameObject spawnEffect;
 
     private void Awake()
@@ -14,30 +13,22 @@ public class EnemySpawner : MonoBehaviour
             sharedInstance = this;
     }
 
-    void Start()
+    public void SpawnEnemy(Enemy enemy, Vector3 position, TriggerSpawner parent)
     {
-        StartCoroutine(SpawnEnemy());
+        StartCoroutine(SpawnEnemyCoroutine(enemy, position, parent));
     }
 
-    public void InstantiateSpawnEffect(Enemy enemy)
+    public void InstantiateSpawnEffect(Enemy enemy, Vector3 position)
     {
-        Instantiate(spawnEffect, enemy.transform.position + new Vector3(0f, -0.5f, 0f), Quaternion.identity);
+        Instantiate(spawnEffect, position + new Vector3(0f, -0.5f, 0f), Quaternion.identity);
         AudioManager.sharedInstance.OnEnemySpawnSound += PlaySpawnSound;
     }
 
-    IEnumerator SpawnEnemy()
+    IEnumerator SpawnEnemyCoroutine(Enemy enemy, Vector3 position, TriggerSpawner parent)
     {
-        for (int i = 0; i < enemies.Length; i++)
-        {
-            InstantiateSpawnEffect(enemies[i]);  
-        }
-
+        InstantiateSpawnEffect(enemy, position);
         yield return new WaitForSeconds(0.7f);
-
-        for (int i = 0; i < enemies.Length; i++)
-        {
-            Instantiate(enemies[i], this.transform);
-        }
+        Instantiate(enemy, position, Quaternion.identity, parent.transform);
     }
 
     public void PlaySpawnSound()
