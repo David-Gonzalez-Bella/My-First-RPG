@@ -6,10 +6,10 @@ using UnityEngine;
 public class Atributes : ScriptableObject //Attributes is only a bunch of data, so theres no need for this class to inherit from MonoBehaviour. Instead it will be an ScriptableObject, so any gameobject can have an "instance" of this data and choose its values for itself
 {
     [Tooltip("Character´s speed")]
-    [SerializeField] private float baseSpeed;
+    public float baseSpeed;
 
     [Tooltip("Character´s damage")]
-    [SerializeField] private int baseDamage;
+    public  int baseDamage;
 
     private int speedIncrease = 0;
     private int damageIncrease = 0;

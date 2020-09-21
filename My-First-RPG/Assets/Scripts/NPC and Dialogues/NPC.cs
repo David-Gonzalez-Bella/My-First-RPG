@@ -13,19 +13,26 @@ public class NPC : Interactive
     {
         //Write the npc´s dialogue
         string npcNoSpacesName = npcName.Replace(" ", "");
-       
+        DialogueBox.sharedInstance.dialogueIndex = 0;
+
         if (npcDialogue == null)
             npcDialogue = DialogueManager.sharedInstance.dialogues[npcNoSpacesName + "_S"];
 
         if (npcMission)
+        {
             Missions_Texts.sharedInstance.AddMission(MissionsManager.sharedInstance.missions[missionId]);
 
-        if (MissionsManager.sharedInstance.missions[missionId].completed) { 
-            npcDialogue = DialogueManager.sharedInstance.dialogues[npcNoSpacesName + "_E"];
-            Missions_Texts.sharedInstance.ClearMission(MissionsManager.sharedInstance.missions[missionId]); //The mission will be marked as "cleared" by painting it in green
-            DialogueBox.sharedInstance.dialogueIndex = 0; //We have to reset the index so the NPC tells the new dialogue (it will be set to zero every time we speak with him)
+            if (MissionsManager.sharedInstance.missions[missionId].completed)
+            {
+                npcDialogue = DialogueManager.sharedInstance.dialogues[npcNoSpacesName + "_E"];
+                Missions_Texts.sharedInstance.ClearMission(MissionsManager.sharedInstance.missions[missionId]); //The mission will be marked as "cleared" by painting it in green
+                GameManager.sharedInstance.player.GetComponent<Experience>().experience += MissionsManager.sharedInstance.missions[missionId].exp; //Once we clear a mission, we will recieve XP
+                if (MissionsManager.sharedInstance.missions[missionId].id == "FirstMission")//Check if its the mission that clears the path
+                {
+                    Rocks.sharedInstance.ClearPath();
+                }
+            }
         }
-
         DialogueBox.sharedInstance.StartDialogue(npcName, npcDialogue);
     }
 }

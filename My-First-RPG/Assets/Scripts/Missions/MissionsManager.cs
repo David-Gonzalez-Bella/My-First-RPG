@@ -39,7 +39,7 @@ public class MissionsManager : MonoBehaviour
             //Inicialize mission texts
             for (int i = 0; i < nMissions; i++)
             {
-                missionText.Add(new Mission { description = "Description", id = "Mission", type = "Type", quantity = 0, progress = 0, completed = false });
+                missionText.Add(new Mission { description = "Description", id = "Mission", type = "Type", quantity = 0, progress = 0, completed = false, exp = 0});
             }
 
             //Serialize them, which means, create a xml document with its information if it does not exist already

@@ -6,7 +6,7 @@ using System.Linq;
 
 public class Missions_Texts : MonoBehaviour
 {
-    public static Missions_Texts sharedInstance;
+    public static Missions_Texts sharedInstance { get; private set; }
 
     public TMP_Text[] missions;
     private int missionIndex = 0;
@@ -35,9 +35,9 @@ public class Missions_Texts : MonoBehaviour
 
     public void ClearMission(Mission mission)
     {
-        for(int i = 0; i < missions.Length; i++)
+        for (int i = 0; i < missions.Length; i++)
         {
-            if(missions[i].text.ToLower().Contains(mission.description.ToLower()))
+            if (missions[i].text.ToLower().Contains(mission.description.ToLower()))
             {
                 missions[i].color = new Color(0.75f, 1.0f, 0.7f, 1.0f);
             }

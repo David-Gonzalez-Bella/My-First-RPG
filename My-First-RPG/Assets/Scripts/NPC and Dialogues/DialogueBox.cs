@@ -48,7 +48,7 @@ public class DialogueBox : MonoBehaviour
     private void FreezePlayer(Dialogue npcDialogue)
     {
         talking = true;
-        GameManager.sharedInstance.player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+        GameManager.sharedInstance.player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         GameManager.sharedInstance.player.GetComponent<Animator>().SetFloat("Running", 0.0f);
         dialogue = npcDialogue;
     }

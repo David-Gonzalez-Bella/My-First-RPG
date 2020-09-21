@@ -8,6 +8,7 @@ public class DialogueManager : MonoBehaviour
     public static DialogueManager sharedInstance;
 
     public Dictionary<string, Dialogue> dialogues = new Dictionary<string, Dialogue>();
+    public Dialogue dungeonInfo;
     public Dialogue firstMissionStart;
     public Dialogue firstMissionEnd;
 
@@ -36,11 +37,12 @@ public class DialogueManager : MonoBehaviour
         if (!System.IO.File.Exists("Assets/Dialogues/dialogues.xml"))
         {
             //Inicialize dialogues
+            dungeonInfo = new Dialogue { lines = new string[] { "dungeonInfo1", "dungeonInfo2", "dungeonInfo3", "dungeonInfo4" , "dungeonInfo5" , "dungeonInfo6" , "dungeonInfo7" , "dungeonInfo8" }, id = "EntranceGuard_S" };
             firstMissionStart = new Dialogue { lines = new string[] { "hi!", "how are you?", "bye!" }, id = "LostWarrior_S" };
             firstMissionEnd = new Dialogue { lines = new string[] { "thankyou1", "thankyou3", "thankyou3" }, id = "LostWarrior_E" };
 
             //Serialize them, which means, create a xml document with its information if it does not exist already
-            Dialogue[] xmlFile = new Dialogue[] { firstMissionStart, firstMissionEnd };
+            Dialogue[] xmlFile = new Dialogue[] { dungeonInfo, firstMissionStart, firstMissionEnd };
             SerializerXML.Serialize("Assets/Dialogues/dialogues.xml", xmlFile);
         }    
     }

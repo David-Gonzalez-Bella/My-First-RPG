@@ -33,9 +33,4 @@ public class Interactive : MonoBehaviour
     {
         Debug.Log("Clicking!!");
     }
-
-    public void OnMove(AxisEventData eventData)
-    {
-        throw new NotImplementedException();
-    }
 }

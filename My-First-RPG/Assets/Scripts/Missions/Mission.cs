@@ -7,4 +7,5 @@ public class Mission
     public int quantity;
     public int progress;
     public bool completed;
+    public int exp;
 }
