@@ -13,12 +13,14 @@ public class AudioManager : MonoBehaviour
     public AudioSource backgroundMusic;
     public AudioSource enemyDamage;
     public AudioSource enemySpawn;
+    public AudioSource collectWeed;
 
     public event Action OnPlaySwordSound;
     public event Action OnPlayFireballSound;
     public event Action OnStepsSound;
     public event Action OnEnemyDamageSound;
     public event Action OnEnemySpawnSound;
+    public event Action OnWeedCollectedSound;
 
     private void Awake()
     {
@@ -33,5 +35,12 @@ public class AudioManager : MonoBehaviour
         OnStepsSound?.Invoke();
         OnEnemyDamageSound?.Invoke();
         OnEnemySpawnSound?.Invoke();
+        OnWeedCollectedSound?.Invoke();
+    }
+
+    public void PlayWeedCollectedSound()
+    {
+        collectWeed.Play();
+        OnWeedCollectedSound -= PlayWeedCollectedSound;
     }
 }

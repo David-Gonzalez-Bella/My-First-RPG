@@ -115,6 +115,7 @@ public class PlayerController : MonoBehaviour
     //    RaycastHit2D[] interactuables = Physics2D.CircleCastAll(this.transform.position, col.size.x, InputPlayer.sharedInstance.faceDirection.normalized, 1.0f, interactLayer);
     //    return interactuables;
     //}
+
     public Collider2D[] Interactuables() //Returns the objects the player can interact with (that means, those that are within its CircleCastAll range)
     {
         Collider2D[] interactuables = Physics2D.OverlapCircleAll(this.transform.position, col.size.x, interactLayer);

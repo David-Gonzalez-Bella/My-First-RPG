@@ -29,4 +29,44 @@
     </lines>
     <id>LostWarrior_E</id>
   </Dialogue>
+  <Dialogue>
+    <lines>
+      <string>Behold the great power of a true elite archmage!!</string>
+      <string>Now, mortal, if you have come this far I guess you are worthy of my trust. Rejoice! You will have the honor of serving me, so listen up carefully. Mine are not exactly easy quests...</string>
+      <string>So...*jumm*, c-could you go check if Mr.Chopy is alright? He is my best friend, the best pet that exists in this and all cosmos.</string>
+      <string>I like him to run freely like a shooting star, but it has been quite some time since I just saw him...</string>
+      <string>*J-JUMM!* W-well, enough sentimentality. Listen up mortal, your duty is to go chech if Mr.Chopy is fine, he should be somewhere near here.</string>
+      <string>Farewell then, I shall be praying for your swift and illustrious victory from here my minion, MUAHAHA!</string>
+    </lines>
+    <id>GreatArchmage_S</id>
+  </Dialogue>
+  <Dialogue>
+    <lines>
+      <string>So, did you see him? Is he alright?!</string>
+      <string>Oh, so he is in a room near here safe and safe and sound, what a relief!!</string>
+      <string>You have my grattitude, your performance was truly sublime. I wish you luck in your incomming adventures, MUAHAHA!</string>
+    </lines>
+    <id>GreatArchmage_E</id>
+  </Dialogue>
+  <Dialogue>
+    <lines>
+      <string>Niaa niaa x3</string>
+    </lines>
+    <id>Mr.Chopy_S</id>
+  </Dialogue>
+  <Dialogue>
+    <lines>
+      <string>Greetings, young man! It's so nice to see some young blood here, it gives me hope and makes me think that maybe, in the future, this dungeon may become a lively and habitable place.</string>
+      <string>Anyway, would you please make this old legs a favour? I need some concrete weeds that grow in this zone of the dungeon. Could you go collect some for me? Four weeds should sufice, so it won't be too much of a pain for you, will it? HO HO HO!</string>
+      <string>I will be here waiting for you return young warrior, thank you once again.</string>
+    </lines>
+    <id>WiseMage_S</id>
+  </Dialogue>
+  <Dialogue>
+    <lines>
+      <string>Oh, you are back already! And you found all of the weeds, youngsters these days are truly amazing, HO HO!</string>
+      <string>Now I can keep working on my potions, thank you noble warrior, my research could not have continued without your help!</string>
+    </lines>
+    <id>WiseMage_E</id>
+  </Dialogue>
 </ArrayOfDialogue>

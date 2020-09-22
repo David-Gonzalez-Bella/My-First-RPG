@@ -31,7 +31,7 @@ public class Health : MonoBehaviour
             else //If the modifyied health is equal or below 0
             {
                 currentHealth = 0;
-                Missions_Texts.sharedInstance.CheckUpdateMission();
+                Missions_Texts.sharedInstance.CheckUpdateMission(MissionsManager.sharedInstance.missions["FirstMission"]);
                 if (this.gameObject.GetComponent<Enemy>() != null) { gameObject.GetComponentInParent<TriggerSpawner>().OnEnemyDied += this.gameObject.GetComponent<Enemy>().DeadInZone; }
                 dieEvent?.Invoke(); //The '?' check is just to avoid a possible error in case that the envent wasn´t dropped in the editor, but it will always invoke 
             }

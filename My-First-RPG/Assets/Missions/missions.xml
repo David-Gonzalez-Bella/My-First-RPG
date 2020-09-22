@@ -1,31 +1,31 @@
 <?xml version="1.0"?>
 <ArrayOfMission xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Mission>
-    <description>Kill 2 enemies</description>
+    <description>Kill 5 enemies</description>
     <id>FirstMission</id>
     <type>Recollection</type>
-    <quantity>2</quantity>
+    <quantity>5</quantity>
     <progress>0</progress>
     <completed>false</completed>
     <exp>5</exp>
   </Mission>
   <Mission>
-    <description>Description</description>
-    <id>Mission</id>
-    <type>Type</type>
+    <description>Find Mr.Chopy</description>
+    <id>FindMrChopy</id>
+    <type>Interaction</type>
     <quantity>0</quantity>
     <progress>0</progress>
     <completed>false</completed>
-    <exp>0</exp>
+    <exp>8</exp>
   </Mission>
   <Mission>
-    <description>Description</description>
-    <id>Mission</id>
-    <type>Type</type>
-    <quantity>0</quantity>
+    <description>Get 4 weeds</description>
+    <id>GetWeeds</id>
+    <type>Recollection</type>
+    <quantity>4</quantity>
     <progress>0</progress>
     <completed>false</completed>
-    <exp>0</exp>
+    <exp>10</exp>
   </Mission>
   <Mission>
     <description>Description</description>
