@@ -54,13 +54,14 @@ public class Missions_Texts : MonoBehaviour
         }
     }
 
-    public void CheckUpdateMission()
+    public void CheckUpdateMission(Mission m)
     {
         for (int i = 0; i < player.activeMissions.Count; i++)
         {
-            if (!player.activeMissions[i].completed)
+            if (player.activeMissions[i]== m && !player.activeMissions[i].completed)
             {
-                if (player.activeMissions[i].description.ToLower().Contains("kill " + player.activeMissions[i].quantity.ToString() + " enemies"))
+                //if (player.activeMissions[i].description.ToLower().Contains("kill " + player.activeMissions[i].quantity.ToString() + " enemies"))
+                if (player.activeMissions[i].type.CompareTo("Recollection") == 0)
                 {
                     player.activeMissions[i].progress++;
                     UpdateMissionText(i, player.activeMissions[i]);

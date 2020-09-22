@@ -27,12 +27,16 @@ public class NPC : Interactive
                 npcDialogue = DialogueManager.sharedInstance.dialogues[npcNoSpacesName + "_E"];
                 Missions_Texts.sharedInstance.ClearMission(MissionsManager.sharedInstance.missions[missionId]); //The mission will be marked as "cleared" by painting it in green
                 GameManager.sharedInstance.player.GetComponent<Experience>().experience += MissionsManager.sharedInstance.missions[missionId].exp; //Once we clear a mission, we will recieve XP
-                if (MissionsManager.sharedInstance.missions[missionId].id == "FirstMission")//Check if its the mission that clears the path
+                if (MissionsManager.sharedInstance.missions[missionId].id.CompareTo("FirstMission") == 0)//Check if its the mission that clears the path
                 {
                     Rocks.sharedInstance.ClearPath();
                 }
             }
         }
         DialogueBox.sharedInstance.StartDialogue(npcName, npcDialogue);
+        if (npcDialogue.id.CompareTo("Mr.Chopy_S") == 0 && GameManager.sharedInstance.player.GetComponent<PlayerController>().activeMissions.Contains(MissionsManager.sharedInstance.missions[missionId]))
+        {
+            MissionsManager.sharedInstance.missions[missionId].completed = true;
+        }
     }
 }
