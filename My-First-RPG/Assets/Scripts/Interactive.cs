@@ -8,8 +8,6 @@ using System;
 public class Interactive : MonoBehaviour
 {
     protected Collider2D col;
-    //public UnityEvent OnInteractive;
-    //public event Action OnInteractive;
     protected PlayerController player;
 
     private void Start()
@@ -18,19 +16,22 @@ public class Interactive : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
+    public void OnMouseOver()
+    {
+        if(!DialogueBox.sharedInstance.visible.interactable)
+            CursorManager.sharedInstance.SetCursor(CursorManager.sharedInstance.handCursor);
+    }
+    public void OnMouseExit() => CursorManager.sharedInstance.SetCursor(CursorManager.sharedInstance.arrowCursor);
     public void OnMouseDown() //The interface´s method must be implemented (ir occurs when we click it)*/
     {
         foreach (Collider2D interactObj in player.Interactuables())
         {
-            if(interactObj.gameObject == this.gameObject) //If this gameObject is within the collection of interactuable objects detected bi the CircleCastAll...
+            if(interactObj.gameObject == this.gameObject) //If this gameObject is within the collection of interactuable objects detected by the CircleCastAll...
             {
                 Interact();
             }
         }   
     }
 
-    public virtual void Interact()
-    {
-        Debug.Log("Clicking!!");
-    }
+    public virtual void Interact()  { }
 }

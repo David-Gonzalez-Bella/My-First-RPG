@@ -17,22 +17,24 @@ public class Rocks : MonoBehaviour
 
     private void Start()
     {
-        positions = new Vector3[2] { new Vector3(2.5f, -5.5f, 4.0f), new Vector3(-0.65f, -1.0f, 4.0f) };
+        positions = new Vector3[2] { new Vector3(15f, 23.0f, 4.0f), new Vector3(15.7f, 18.2f, 4.0f) };
     }
 
     public void ClearPath()
     {
-        int p = 0;
-        foreach(Transform rock in rocks)
+        if (rocks.Count > 4) //If the path as not been cleared yet
         {
-            if(rock.tag.CompareTo("Rock") != 0)
+            foreach (Transform rock in rocks)
             {
-                Destroy(rock.gameObject);
-            }
-            else
-            {
-                rock.localPosition = positions[p];
-                p++;
+                if (rock.tag.CompareTo("Rock") != 0)
+                {
+                    Destroy(rock.gameObject);
+                }
+                else
+                {
+                    if(rock.gameObject.name.Contains("RockB")) rock.transform.position = positions[0];
+                    else rock.transform.position = positions[1];
+                }
             }
         }
     }
