@@ -22,7 +22,7 @@ public class NPC : Interactive
         {
             Missions_Texts.sharedInstance.AddMission(MissionsManager.sharedInstance.missions[missionId]);
 
-            if (MissionsManager.sharedInstance.missions[missionId].completed)
+            if (MissionsManager.sharedInstance.missions[missionId].completed && npcDialogue != DialogueManager.sharedInstance.dialogues[npcNoSpacesName + "_E"])
             {
                 npcDialogue = DialogueManager.sharedInstance.dialogues[npcNoSpacesName + "_E"];
                 Missions_Texts.sharedInstance.ClearMission(MissionsManager.sharedInstance.missions[missionId]); //The mission will be marked as "cleared" by painting it in green

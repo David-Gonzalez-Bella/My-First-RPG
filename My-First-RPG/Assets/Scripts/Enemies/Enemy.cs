@@ -44,13 +44,16 @@ public class Enemy : MonoBehaviour //This contains the IA and the atributes ever
         walkHash = Animator.StringToHash("Walk");
     }
 
-    protected virtual void Behaviour() { }
-
     private void Update() //Every enemy shall check its behaviour every frame
     {
         Behaviour(); //The knight´s behaviour will be checked every frame
     }
-   
+
+    public void OnMouseOver() => CursorManager.sharedInstance.SetCursor(CursorManager.sharedInstance.swordCursor);
+    public void OnMouseExit() => CursorManager.sharedInstance.SetCursor(CursorManager.sharedInstance.arrowCursor);
+
+    protected virtual void Behaviour() { }
+
     protected void AttackPlayer()
     {
         int attackChance = Random.Range(0, 100);

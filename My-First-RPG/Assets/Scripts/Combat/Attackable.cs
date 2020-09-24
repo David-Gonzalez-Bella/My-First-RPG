@@ -23,7 +23,7 @@ public class Attackable : MonoBehaviour
     public void Attacked(Vector2 attackDirection, int damage)
     { 
         StartCoroutine(TakeDamage(damage));
-        rb.AddForce(attackDirection * 130, ForceMode2D.Impulse); //When attacked, the object will be pushed back as well
+        rb.AddForce(attackDirection * 100, ForceMode2D.Impulse); //When attacked, the object will be pushed back as well
         if(this.tag == "Player") { PlayPlayerDamageSound(); }
         else { AudioManager.sharedInstance.OnEnemyDamageSound += PlayEnemyDamageSound; }
     }

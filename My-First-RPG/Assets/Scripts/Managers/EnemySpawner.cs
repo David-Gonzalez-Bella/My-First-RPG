@@ -13,6 +13,7 @@ public class EnemySpawner : MonoBehaviour
             sharedInstance = this;
     }
 
+
     public void SpawnEnemy(Enemy enemy, Vector3 position, TriggerSpawner parent)
     {
         StartCoroutine(SpawnEnemyCoroutine(enemy, position, parent));

@@ -53,13 +53,13 @@ public class PlayerController : MonoBehaviour
         attackHashCode = Animator.StringToHash("Attack");
         anim.SetFloat(yHashCode, -1);
 
-        atrib.baseDamage = 4;
+        atrib.baseSpeed = 4;
         atrib.baseDamage = 1;
     }
 
     void Update()
     {
-        if (!DialogueBox.sharedInstance.talking)
+        if (!DialogueBox.sharedInstance.talking && GameManager.sharedInstance.currentGameState == gameState.inGame)
         {
             moveX = InputPlayer.sharedInstance.horizontal;
             moveY = InputPlayer.sharedInstance.vertical;

@@ -9,7 +9,7 @@ public class DialogueBox : MonoBehaviour
     public TMP_Text speaker;
     public TMP_Text content;
     private Dialogue dialogue;
-    private CanvasGroup visible;
+    public CanvasGroup visible;
     public int dialogueIndex = 0;
     public bool talking = false;
 
