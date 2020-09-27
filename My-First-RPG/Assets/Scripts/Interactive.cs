@@ -8,12 +8,11 @@ using System;
 public class Interactive : MonoBehaviour
 {
     protected Collider2D col;
-    protected PlayerController player;
+    public PlayerController player;
 
     private void Start()
     {
         col = GetComponent<Collider2D>();
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     public void OnMouseOver()

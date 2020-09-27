@@ -9,7 +9,7 @@ public class Missions_Texts : MonoBehaviour
     public static Missions_Texts sharedInstance { get; private set; }
 
     public TMP_Text[] missions;
-    private int missionIndex = 0;
+    public int missionIndex = 0;
     private PlayerController player;
 
     private void Awake()
@@ -58,7 +58,7 @@ public class Missions_Texts : MonoBehaviour
     {
         for (int i = 0; i < player.activeMissions.Count; i++)
         {
-            if (player.activeMissions[i]== m && !player.activeMissions[i].completed)
+            if (player.activeMissions[i] == m && !player.activeMissions[i].completed)
             {
                 //if (player.activeMissions[i].description.ToLower().Contains("kill " + player.activeMissions[i].quantity.ToString() + " enemies"))
                 if (player.activeMissions[i].type.CompareTo("Recollection") == 0)
@@ -71,6 +71,18 @@ public class Missions_Texts : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    public void EmptyMissions()
+    {
+        for (int i = 0; i < missions.Length; i++)
+        {
+            missions[i].color = new Color(1.0f, 0.9f, 0.8f, 1.0f);
+        }
+        for (int i = 0; i < missions.Length; i++)
+        {
+            missions[i].text = "";
         }
     }
 }

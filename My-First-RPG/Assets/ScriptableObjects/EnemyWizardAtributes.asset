@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: EnemyWizardAtributes
   m_EditorClassIdentifier: 
   baseSpeed: 2
-  baseDamage: 1
+  baseDamage: 3

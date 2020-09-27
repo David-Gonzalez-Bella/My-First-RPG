@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Rock
+  - Enemy
+  - Spawner
+  - NPC
+  - Weed
+  - Cat
   layers:
   - Default
   - TransparentFX

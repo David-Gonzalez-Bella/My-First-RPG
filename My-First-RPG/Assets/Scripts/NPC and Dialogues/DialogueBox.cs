@@ -48,8 +48,7 @@ public class DialogueBox : MonoBehaviour
     private void FreezePlayer(Dialogue npcDialogue)
     {
         talking = true;
-        GameManager.sharedInstance.player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
-        GameManager.sharedInstance.player.GetComponent<Animator>().SetFloat("Running", 0.0f);
+        GameManager.sharedInstance.FreezePlayer();
         dialogue = npcDialogue;
     }
 
@@ -57,8 +56,7 @@ public class DialogueBox : MonoBehaviour
     {
         talking = false;
         dialogueIndex = dialogue.lines.Length - 1;
-        GameManager.sharedInstance.player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-        GameManager.sharedInstance.player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        GameManager.sharedInstance.UnfreezePlayer();
     }
 
     public void MakeVisible(float alpha, bool interactable)

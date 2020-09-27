@@ -10,13 +10,13 @@ public class Experience : MonoBehaviour
     public float nextLevelExp;
     private float currentExp = 0.0f;
     private float porcentageExp = 0.0f;
-    public int atributePoints { get; private set; } = 0;
+    public int atributePoints = 0;
     public Image experienceBar;
     public  List <ActiveButton> UI_Buttons;
 
     [SerializeField] private TMP_Text levelImg;
 
-    private int level { get; set; } = 1;  //We start at level 1
+    public int level = 1;  //We start at level 1
     public float experience //This will manage our experience, respecting our limits and taking into account the current experience we have
     {
         get
@@ -47,7 +47,7 @@ public class Experience : MonoBehaviour
         CheckUnableButtons();
     }
 
-    private float ExperienceCurve(int level) //The level is the "x" of our function. Returns the experience of a concrete level
+    public float ExperienceCurve(int level) //The level is the "x" of our function. Returns the experience of a concrete level
     {
         float function = Mathf.Log10(level) * 20; //This function stablishes a relationship between level and experience (for each value of level, there will be an amount of experience associated)
         float experience = Mathf.Ceil(function); //our "y" (the experience) depends on the function that involves the "x" (level) value
@@ -76,7 +76,7 @@ public class Experience : MonoBehaviour
         Atributes_Texts.sharedInstance.UpdateAtribsTexts(level, atributePoints);
         CheckUnableButtons();
     }
-    private void CheckUnableButtons()
+    public void CheckUnableButtons()
     {
         foreach (ActiveButton button in UI_Buttons)
         {

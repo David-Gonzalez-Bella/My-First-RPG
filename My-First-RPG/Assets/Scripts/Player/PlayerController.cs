@@ -15,11 +15,14 @@ public class PlayerController : MonoBehaviour
     public AudioSource damgeAudioSource;
     public AudioSource stepsAudioSource;
     public AudioSource dashAudioSource;
+    public AudioSource dieAudioSource;
+    public AudioSource inventaryAudioSource;
 
     private int xHashCode;
     private int yHashCode;
     private int runningHashCode;
     private int attackHashCode;
+
     //private Vector2 newPosition;
 
     private Rigidbody2D rb;
@@ -30,7 +33,9 @@ public class PlayerController : MonoBehaviour
     public LayerMask interactLayer;
     private Attack atck;
     private Abilities abilities;
-    private Mana mana;
+    public Mana mana;
+    public Health health;
+    public Experience exp;
     public List<Mission> activeMissions = new List<Mission>();
 
     public GameObject swordFlash;
@@ -43,6 +48,8 @@ public class PlayerController : MonoBehaviour
         atck = GetComponent<Attack>();
         abilities = GetComponent<Abilities>();
         mana = GetComponent<Mana>();
+        health = GetComponent<Health>();
+        exp = GetComponent<Experience>();
     }
 
     void Start()
@@ -51,7 +58,7 @@ public class PlayerController : MonoBehaviour
         yHashCode = Animator.StringToHash("Y");
         runningHashCode = Animator.StringToHash("Running");
         attackHashCode = Animator.StringToHash("Attack");
-        anim.SetFloat(yHashCode, -1);
+        ResetPlayerLookAt();
 
         atrib.baseSpeed = 4;
         atrib.baseDamage = 1;
@@ -61,10 +68,13 @@ public class PlayerController : MonoBehaviour
     {
         if (!DialogueBox.sharedInstance.talking && GameManager.sharedInstance.currentGameState == gameState.inGame)
         {
-            moveX = InputPlayer.sharedInstance.horizontal;
-            moveY = InputPlayer.sharedInstance.vertical;
-            attack = InputPlayer.sharedInstance.basicAtk;
-            inventary = InputPlayer.sharedInstance.inventary;
+            if (!PanelsMenu.sharedInstance.panelsOpen) //You can onlu move or attack if your inventary is not open
+            {
+                moveX = InputPlayer.sharedInstance.horizontal;
+                moveY = InputPlayer.sharedInstance.vertical;
+                attack = InputPlayer.sharedInstance.basicAtk;
+            }
+            inventary = InputPlayer.sharedInstance.inventary; //You can always open and close your inventary once you are playing
 
             if (moveX != 0 || moveY != 0) //It will update the state only if the character moves. Otherwise, it will stay in the last state it entered (the knight will look at the direction he was lastly told to move to)
             {
@@ -81,6 +91,7 @@ public class PlayerController : MonoBehaviour
             }
             if (inventary)
             {
+                PlayInventaryAudio();
                 PanelsMenu.sharedInstance.OpenClosePanels();
             }
         }
@@ -108,6 +119,22 @@ public class PlayerController : MonoBehaviour
                 abilities.Dash(InputPlayer.sharedInstance.faceDirection.normalized, rb);
             }
         }
+    }
+
+    public void PlayDieAudio()
+    {
+        dieAudioSource.Play();
+        AudioManager.sharedInstance.OnPlayerDieSound -= PlayDieAudio;
+    }
+
+    public void PlayInventaryAudio()
+    {
+        inventaryAudioSource.Play();
+    }
+
+    public void ResetPlayerLookAt()
+    {
+        anim.SetFloat(yHashCode, -1);
     }
 
     //public RaycastHit2D[] Interactuables() //Returns the objects the player can interact with (that means, those that are within its CircleCastAll range)
