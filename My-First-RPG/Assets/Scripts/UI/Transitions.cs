@@ -8,7 +8,8 @@ public class Transitions : MonoBehaviour
 
     private Animator anim;
     private Canvas canvas;
-    private int fadeTriggerHash;
+    private int toGameTriggerHash;
+    private int toMainMenuTriggerHash;
 
     private void Awake()
     {
@@ -21,19 +22,37 @@ public class Transitions : MonoBehaviour
 
     private void Start()
     {
-        fadeTriggerHash = Animator.StringToHash("Transition");
+        EndFadeTransition();
+        toGameTriggerHash = Animator.StringToHash("TransitionToGame");
+        toMainMenuTriggerHash = Animator.StringToHash("TransitionToMainMenu");
     }
 
-    public void FadeTransition()
+    public void TransitionToGame()
+    {
+        PrepareTransition();
+        anim.SetTrigger(toGameTriggerHash);
+    }
+
+    public void TransitionToMainMenu()
+    {
+        PrepareTransition();
+        anim.SetTrigger(toMainMenuTriggerHash);
+    }
+
+    private void PrepareTransition()
     {
         canvas.enabled = true;
         canvas.sortingOrder = 3;
-        anim.SetTrigger(fadeTriggerHash);
     }
 
     public void GoToGame()
     {
         GameManager.sharedInstance.StartGame();
+    }
+
+    public void GoToMainMenu()
+    {
+        GameManager.sharedInstance.ShowMainMenu();
     }
 
     public void EndFadeTransition()

@@ -7,7 +7,7 @@ public class Rocks : MonoBehaviour
 {
     public static Rocks sharedInstance { get; private set; }
     public List<Transform> rocks;
-    private Vector3[] positions;
+    public bool pathCleared = false;
 
     private void Awake()
     {
@@ -15,26 +15,30 @@ public class Rocks : MonoBehaviour
             sharedInstance = this;
     }
 
-    private void Start()
-    {
-        positions = new Vector3[2] { new Vector3(15f, 23.0f, 4.0f), new Vector3(15.7f, 18.2f, 4.0f) };
-    }
-
     public void ClearPath()
     {
-        if (rocks.Count > 4) //If the path as not been cleared yet
+        if (!pathCleared)
         {
+            pathCleared = true;
             foreach (Transform rock in rocks)
             {
                 if (rock.tag.CompareTo("Rock") != 0)
                 {
-                    Destroy(rock.gameObject);
+                    rock.GetComponent<SpriteRenderer>().enabled = false;
+                    if (rock.GetComponent<CapsuleCollider2D>() != null) { rock.GetComponent<CapsuleCollider2D>().enabled = false; }
                 }
-                else
-                {
-                    if(rock.gameObject.name.Contains("RockB")) rock.transform.position = positions[0];
-                    else rock.transform.position = positions[1];
-                }
+            }
+        }
+    }
+
+    public void BlockPath()
+    {
+        foreach (Transform rock in rocks)
+        {
+            if (rock.tag.CompareTo("Rock") != 0)
+            {
+                rock.GetComponent<SpriteRenderer>().enabled = true;
+                if (rock.GetComponent<CapsuleCollider2D>() != null) { rock.GetComponent<CapsuleCollider2D>().enabled = true; }
             }
         }
     }

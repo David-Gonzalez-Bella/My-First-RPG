@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8959975250406076299}
   - component: {fileID: 7778772517168445892}
-  - component: {fileID: 2069311876875601624}
   m_Layer: 0
   m_Name: RockC
   m_TagString: Untagged
@@ -83,19 +82,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &2069311876875601624
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2309485452712993685}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -5.753549e-10, y: -0.004826427}
-  m_Size: {x: 0.7812501, y: 0.6778472}
-  m_Direction: 1

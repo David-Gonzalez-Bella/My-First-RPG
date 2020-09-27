@@ -46,7 +46,8 @@ public class Enemy : MonoBehaviour //This contains the IA and the atributes ever
 
     private void Update() //Every enemy shall check its behaviour every frame
     {
-        Behaviour(); //The knight´s behaviour will be checked every frame
+        if (GameManager.sharedInstance.currentGameState == gameState.inGame)
+            Behaviour(); //The knight´s behaviour will be checked every frame
     }
 
     public void OnMouseOver() => CursorManager.sharedInstance.SetCursor(CursorManager.sharedInstance.swordCursor);

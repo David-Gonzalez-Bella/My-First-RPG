@@ -25,7 +25,7 @@ public class MissionsManager : MonoBehaviour
         Initialize();
 
         //Now that the file exists (so we can modify it easily from there, thats the point of all this) we can deserialize it and add the Dialogue objects to the dictionary
-        List<Mission> deserializedObjs = SerializerXML.Deserialize<List<Mission>>("Assets/Missions/missions.xml");
+        List<Mission> deserializedObjs = SerializerXML.Deserialize<List<Mission>>(Application.streamingAssetsPath + "/XML//Missions/missions.xml");
         foreach (Mission m in deserializedObjs)
         {
             missions[m.id] = m;
@@ -34,7 +34,7 @@ public class MissionsManager : MonoBehaviour
 
     private void Initialize()
     { 
-        if (!System.IO.File.Exists("Assets/Missions/missions.xml"))
+        if (!System.IO.File.Exists(Application.streamingAssetsPath + "/XML/Missions/missions.xml"))
         {
             //Inicialize mission texts
             for (int i = 0; i < nMissions; i++)
@@ -43,7 +43,16 @@ public class MissionsManager : MonoBehaviour
             }
 
             //Serialize them, which means, create a xml document with its information if it does not exist already
-            SerializerXML.Serialize("Assets/Missions/missions.xml", missionText);
+            SerializerXML.Serialize(Application.streamingAssetsPath + "/XML/Missions/missions.xml", missionText);
+        }
+    }
+
+    public void ResetMissionsProgress()
+    {
+        foreach (var item in missions.Values)
+        {
+            item.progress = 0;
+            item.completed = false;
         }
     }
 }

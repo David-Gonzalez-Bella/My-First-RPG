@@ -30,7 +30,7 @@ public class DialogueManager : MonoBehaviour
         Initialize();
 
         //Now that the file exists (so we can modify it easily from there, thats the point of all this) we can deserialize it and add the Dialogue objects to the dictionary
-        Dialogue[] deserializedObjs = SerializerXML.Deserialize<Dialogue[]>("Assets/Dialogues/dialogues.xml");
+        Dialogue[] deserializedObjs = SerializerXML.Deserialize<Dialogue[]>(Application.streamingAssetsPath + "/XML/Dialogues/dialogues.xml");
         foreach (Dialogue d in deserializedObjs)
         {
             dialogues[d.id] = d;
@@ -39,7 +39,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Initialize()
     {   
-        if (!System.IO.File.Exists("Assets/Dialogues/dialogues.xml"))
+        if (!System.IO.File.Exists(Application.streamingAssetsPath + "/XML/Dialogues/dialogues.xml"))
         {
             //Inicialize dialogues
             dungeonInfo = new Dialogue { lines = new string[] { "dungeonInfo1", "dungeonInfo2", "dungeonInfo3", "dungeonInfo4" , "dungeonInfo5" , "dungeonInfo6" , "dungeonInfo7" , "dungeonInfo8" }, id = "EntranceGuard_S" };
@@ -53,7 +53,7 @@ public class DialogueManager : MonoBehaviour
 
             //Serialize them, which means, create a xml document with its information if it does not exist already
             Dialogue[] xmlFile = new Dialogue[] { dungeonInfo, firstMissionStart, firstMissionEnd, findPetMissionStart, findPetMissionEnd, petDialogue, collectWeedsStart, collectWeedsEnd };
-            SerializerXML.Serialize("Assets/Dialogues/dialogues.xml", xmlFile);
+            SerializerXML.Serialize(Application.streamingAssetsPath + "/XML/Dialogues/dialogues.xml", xmlFile);
         }    
     }
 }

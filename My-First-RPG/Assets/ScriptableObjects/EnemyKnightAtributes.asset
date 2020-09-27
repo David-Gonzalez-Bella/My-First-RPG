@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: EnemyKnightAtributes
   m_EditorClassIdentifier: 
   baseSpeed: 3
-  baseDamage: 1
+  baseDamage: 2

@@ -8,7 +8,7 @@ public class TriggerSpawner : MonoBehaviour
     public Enemy[] enemies;
     public Vector3[] enemyPossitions;
     public event Action OnEnemyDied;
-    private bool playerInside = false;
+    public bool playerInside = false;
     public int deadEnemies = 0;
 
     private void OnValidate()
