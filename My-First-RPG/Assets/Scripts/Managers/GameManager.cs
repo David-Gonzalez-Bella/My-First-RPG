@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Scripting.APIUpdating;
 
 public enum gameState { mainMenu, inGame, deadScreen, leavingScreen }
 
@@ -13,7 +15,8 @@ public class GameManager : MonoBehaviour
     public GameObject player { get; private set; }
     public GameObject playerDieEffect;
     public GameObject mainMenu;
-    
+
+    public Camera mainCamera;
 
     public gameState currentGameState;
 
@@ -26,6 +29,17 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        ScaleCamera();
+    }
+
+    private void ScaleCamera()
+    {
+        Vector2 screenResolution = new Vector2(Screen.width, Screen.height);
+        float srcWidth = Screen.width;
+        float srcHeight = Screen.height;
+
+        float DEVICE_SCREEN_ASPECT = srcWidth / srcHeight;
+        mainCamera.aspect = DEVICE_SCREEN_ASPECT;
     }
 
     private void ResetStats()
