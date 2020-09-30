@@ -17,6 +17,7 @@ public class MenusManager : MonoBehaviour
     private Vector3 wannaLeaveScreenScale;
     public Button dieScreenPlayAgain;
     public Button dieScreenGoToMenu;
+    public Button pauseButton;
     public Image dieScreenDarkBackgroundAlpha;
     public RectTransform dieScreenDarkBackgroundSize;
     public TMP_Text dieScreenYouDieTitle;
@@ -42,6 +43,11 @@ public class MenusManager : MonoBehaviour
         dieScreen.gameObject.SetActive(false);
         pauseScreen.gameObject.SetActive(false);
         wannaLeaveScreen.gameObject.SetActive(false);
+    }
+
+    private void Update()
+    {
+        pauseButton.interactable = GameManager.sharedInstance.currentGameState == gameState.inGame;
     }
 
     public void PauseGame()

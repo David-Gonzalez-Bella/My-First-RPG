@@ -146,7 +146,6 @@ public class GameManager : MonoBehaviour
     {
         LeaveDeadScreen();
         LeaveWannaLeaveScreen();
-        currentGameState = gameState.mainMenu;
         mainMenu.SetActive(true);
     }
 
