@@ -22,7 +22,8 @@ public class Transitions : MonoBehaviour
 
     private void Start()
     {
-        EndFadeTransition();
+        canvas.sortingOrder = 0;
+        canvas.enabled = false;
         toGameTriggerHash = Animator.StringToHash("TransitionToGame");
         toMainMenuTriggerHash = Animator.StringToHash("TransitionToMainMenu");
     }
@@ -55,10 +56,18 @@ public class Transitions : MonoBehaviour
         GameManager.sharedInstance.ShowMainMenu();
     }
 
-    public void EndFadeTransition()
+    public void EndFadeTransitionToGame()
     {
         canvas.sortingOrder = 0;
         canvas.enabled = false;
+        GameManager.sharedInstance.currentGameState = gameState.inGame;
+    }
+
+    public void EndFadeTransitionToMenu()
+    {
+        canvas.sortingOrder = 0;
+        canvas.enabled = false;
+        GameManager.sharedInstance.currentGameState = gameState.mainMenu;
     }
 
 }
