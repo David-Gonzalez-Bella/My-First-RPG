@@ -37,6 +37,7 @@ public class Transitions : MonoBehaviour
     public void TransitionToMainMenu()
     {
         PrepareTransition();
+        GameManager.sharedInstance.currentGameState = gameState.mainMenu;
         anim.SetTrigger(toMainMenuTriggerHash);
     }
 
