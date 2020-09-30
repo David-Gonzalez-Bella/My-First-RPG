@@ -28,6 +28,7 @@ ScriptsOnlyBuild:
     - NPC
     - PanelsMenu
     - Parallax
+    - PauseMenu
     - PlayerController
     - Proyectile
     - Rocks
@@ -257,6 +258,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 14696}
     - Class: 114
       Script: {instanceID: 14710}
+    - Class: 114
+      Script: {instanceID: 46402}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1138,7 +1141,7 @@ ScriptsOnlyBuild:
     className: MarkerTrack
   - hash:
       serializedVersion: 2
-      Hash: e2872da57d06ba2d1d43c3090709703b
+      Hash: f115808b74093af48a6af8a5e7cf8f88
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MenusManager
@@ -1316,6 +1319,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PauseMenu
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity

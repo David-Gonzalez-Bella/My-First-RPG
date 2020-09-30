@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Scripting.APIUpdating;
 
-public enum gameState { mainMenu, inGame, deadScreen, leavingScreen }
+public enum gameState { mainMenu, inGame, deadScreen, leavingScreen, pauseScreen }
 
 public class GameManager : MonoBehaviour
 {
@@ -30,6 +30,11 @@ public class GameManager : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         ScaleCamera();
+    }
+
+    private void Update()
+    {
+        Debug.Log(currentGameState);
     }
 
     private void ScaleCamera()
@@ -128,6 +133,7 @@ public class GameManager : MonoBehaviour
         ResetDialoguesNPCs();
         ResetTexts();
         DestroyAllEnemies();
+        LeavePauseScreen();
         LeaveWannaLeaveScreen();
         LeaveDeadScreen();
         foreach (SpriteRenderer spr in player.GetComponentsInChildren<SpriteRenderer>()) { spr.enabled = true; } //We now enable the minimap sprite and the main screen sprite of the player
@@ -165,6 +171,22 @@ public class GameManager : MonoBehaviour
         MenusManager.sharedInstance.wannaLeaveScreen.gameObject.SetActive(false);
 
         UnfreezePlayer();
+        //currentGameState = gameState.inGame;
+    }
+
+    public void LeavePauseScreen()
+    {
+        MenusManager.sharedInstance.pauseScreen.GetComponent<Animator>().SetBool(MenusManager.sharedInstance.pauseHashCode, false);
+        MenusManager.sharedInstance.ResetPauseScreenScale();
+        MenusManager.sharedInstance.pauseScreen.gameObject.SetActive(false);
+
+        Time.timeScale = 1.0f;
+        UnfreezePlayer();
+        //currentGameState = gameState.inGame;
+    }
+
+    public void GameStateToGame()
+    {
         currentGameState = gameState.inGame;
     }
 

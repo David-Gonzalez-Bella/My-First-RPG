@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 movement;
     private bool attack;
     private bool inventary;
+    private bool pause;
     public AudioSource attackAudioSource;
     public AudioSource damgeAudioSource;
     public AudioSource stepsAudioSource;
@@ -66,33 +67,44 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (!DialogueBox.sharedInstance.talking && GameManager.sharedInstance.currentGameState == gameState.inGame)
+        if (!DialogueBox.sharedInstance.talking)
         {
-            if (!PanelsMenu.sharedInstance.panelsOpen) //You can onlu move or attack if your inventary is not open
+            if (GameManager.sharedInstance.currentGameState == gameState.inGame)
             {
-                moveX = InputPlayer.sharedInstance.horizontal;
-                moveY = InputPlayer.sharedInstance.vertical;
-                attack = InputPlayer.sharedInstance.basicAtk;
-            }
-            inventary = InputPlayer.sharedInstance.inventary; //You can always open and close your inventary once you are playing
+                if (!PanelsMenu.sharedInstance.panelsOpen) //You can onlu move or attack if your inventary is not open
+                {
+                    moveX = InputPlayer.sharedInstance.horizontal;
+                    moveY = InputPlayer.sharedInstance.vertical;
+                    attack = InputPlayer.sharedInstance.basicAtk;
+                }
+                inventary = InputPlayer.sharedInstance.inventary; //You can always open and close your inventary once you are playing
 
-            if (moveX != 0 || moveY != 0) //It will update the state only if the character moves. Otherwise, it will stay in the last state it entered (the knight will look at the direction he was lastly told to move to)
-            {
-                anim.SetFloat(xHashCode, moveX);
-                anim.SetFloat(yHashCode, moveY);
-                anim.SetFloat(runningHashCode, Mathf.Abs(moveX) + Mathf.Abs(moveY));
-                if (!stepsAudioSource.isPlaying)
-                    StartCoroutine(PlayStepsSound());
+                if (moveX != 0 || moveY != 0) //It will update the state only if the character moves. Otherwise, it will stay in the last state it entered (the knight will look at the direction he was lastly told to move to)
+                {
+                    anim.SetFloat(xHashCode, moveX);
+                    anim.SetFloat(yHashCode, moveY);
+                    anim.SetFloat(runningHashCode, Mathf.Abs(moveX) + Mathf.Abs(moveY));
+                    if (!stepsAudioSource.isPlaying)
+                        StartCoroutine(PlayStepsSound());
+                }
+                if (attack) //If we pressed the attack button/s
+                {
+                    //atck.ActionAttack(InputPlayer.sharedInstance.faceDirection, atrib.damage); //This will send the direction we are facing ((1, 0), (0, 1), (-1, 0) or (0, -1))
+                    anim.SetTrigger(attackHashCode);
+                }
+                if (inventary)
+                {
+                    PlayInventaryAudio();
+                    PanelsMenu.sharedInstance.OpenClosePanels();
+                }
             }
-            if (attack) //If we pressed the attack button/s
+            if (GameManager.sharedInstance.currentGameState == gameState.inGame || GameManager.sharedInstance.currentGameState == gameState.pauseScreen)
             {
-                //atck.ActionAttack(InputPlayer.sharedInstance.faceDirection, atrib.damage); //This will send the direction we are facing ((1, 0), (0, 1), (-1, 0) or (0, -1))
-                anim.SetTrigger(attackHashCode);
-            }
-            if (inventary)
-            {
-                PlayInventaryAudio();
-                PanelsMenu.sharedInstance.OpenClosePanels();
+                pause = InputPlayer.sharedInstance.pause;
+                if (pause)
+                {
+                    MenusManager.sharedInstance.PauseGame();
+                }
             }
         }
     }
