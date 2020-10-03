@@ -11,15 +11,17 @@ public class NPC : Interactive
 
     public override void Interact()
     {
-        if(this.gameObject.tag.CompareTo("Cat") != 0)
+        if (!DialogueBox.sharedInstance.talking)
         {
-            AudioManager.sharedInstance.OnTalkSoundNPC += AudioManager.sharedInstance.PlayTalkSoundNPC;
+            if (this.gameObject.tag.CompareTo("Cat") != 0)
+            {
+                AudioManager.sharedInstance.OnTalkSoundNPC += AudioManager.sharedInstance.PlayTalkSoundNPC;
+            }
+            else
+            {
+                AudioManager.sharedInstance.OnTalkSoundNPC += AudioManager.sharedInstance.PlayTalkSoundCat;
+            }
         }
-        else
-        {
-            AudioManager.sharedInstance.OnTalkSoundNPC += AudioManager.sharedInstance.PlayTalkSoundCat;
-        }
-        
         if (!PanelsMenu.sharedInstance.panelsOpen)
         {
             //Write the npc´s dialogue
